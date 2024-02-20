@@ -6,6 +6,11 @@ export const Training = ({theme , images , interval}) => {
   const trainingRef = useRef(null);
 
   useEffect(() => {
+    images.forEach((image) => {
+      const img = new Image();
+      img.src = image;
+    });
+
     let timer = null;
     const currentRef = trainingRef.current;
 
@@ -31,7 +36,7 @@ export const Training = ({theme , images , interval}) => {
         observer.unobserve(currentRef);
       }
     };
-  }, [interval, images.length]);
+  }, [interval, images]);
 
   return (
     <div ref={trainingRef}>
