@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@-webkit-keyframes come-in {
+  0% {
+    -webkit-transform: translatey(100px);
+            transform: translatey(150px);
+    opacity: 0;
+  }
+  30% {
+    -webkit-transform: translateX(-50px) scale(0.4);
+            transform: translateX(-50px) scale(0.4);
+  }
+  70% {
+    -webkit-transform: translateX(0px) scale(1.2);
+            transform: translateX(0px) scale(1.2);
+  }
+  100% {
+    -webkit-transform: translatey(0px) scale(1);
+            transform: translatey(0px) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes come-in {
+  0% {
+    -webkit-transform: translatey(100px);
+            transform: translatey(100px);
+    opacity: 0;
+  }
+  30% {
+    -webkit-transform: translateX(-50px) scale(0.4);
+            transform: translateX(-50px) scale(0.4);
+  }
+  70% {
+    -webkit-transform: translateX(0px) scale(1.2);
+            transform: translateX(0px) scale(1.2);
+  }
+  100% {
+    -webkit-transform: translatey(0px) scale(1);
+            transform: translatey(0px) scale(1);
+    opacity: 1;
+  }
+}
+
+.floating-container {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  bottom: 0;
+  right: 0;
+  margin: 35px 25px;
+}
+
+.floating-container.active {
+    height: 450px;
+  }
+
+  .floating-container.active .element-container .float-element:nth-child(1) {
+    -webkit-animation: come-in 0.4s forwards 0.2s;
+            animation: come-in 0.4s forwards 0.2s;
+  }
+  .floating-container.active .element-container .float-element:nth-child(2) {
+    -webkit-animation: come-in 0.4s forwards 0.4s;
+            animation: come-in 0.4s forwards 0.4s;
+  }
+  .floating-container.active .element-container .float-element:nth-child(3) {
+    -webkit-animation: come-in 0.4s forwards 0.6s;
+            animation: come-in 0.4s forwards 0.6s;
+  }
+  .floating-container.active .element-container .float-element:nth-child(4) {
+    -webkit-animation: come-in 0.4s forwards 0.8s;
+            animation: come-in 0.4s forwards 0.8s;
+  }
+  .floating-container.active .element-container .float-element:nth-child(5) {
+    -webkit-animation: come-in 0.4s forwards 1.0s;
+            animation: come-in 0.4s forwards 1.0s;
+  }
+
+.floating-container .floating-button {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  bottom: 0;
+  border-radius: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: white;
+  line-height: 65px;
+  text-align: center;
+  font-size: 23px;
+  z-index: 100;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.floating-container .float-element {
+  position: relative;
+  display: block;
+  border-radius: 50%;
+  width: 80px;
+  height: 60px;
+  margin: 15px auto;
+  color: "#9ca3ae";
+  font-weight: 500;
+  text-align: center;
+  line-height: 60px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 0;
+  opacity: 0;
+  -webkit-transform: translateY(100px);
+          transform: translateY(100px);
+}
+.floating-container .float-element .scroll-button {
+  vertical-align: middle;
+  font-size: 12px;
+  color: white;
+}
+.floating-container .float-element:nth-child(1) {
+  background: #758CA3;
+}
+.floating-container .float-element:nth-child(2) {
+  background: #758CA3;
+}
+.floating-container .float-element:nth-child(3) {
+  background: #758CA3;
+}
+
+.floating-container .float-element:nth-child(4) {
+    background: #758CA3;
+  }
+.floating-container .float-element:nth-child(5) {
+    background: #758CA3;
+}
