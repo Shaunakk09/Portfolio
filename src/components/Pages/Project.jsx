@@ -28,12 +28,6 @@ export const Project = ({theme}) => {
       "title": "TaskMate",
       "subTitle": "Helps you manage your tasks",
     },
-    {
-      "webUrl": "https://blackjack-shaunakk09.netlify.app/",
-      "imageUrl": require("./icons/projects/blackjack.png"),
-      "title": "Black Jack",
-      "subTitle": "Play black jack with computer",
-    },
   ]
   return (
     <div>

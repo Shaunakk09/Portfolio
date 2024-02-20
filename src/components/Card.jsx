@@ -6,7 +6,8 @@ export const Card = ({theme,company}) => {
     <div className={`max-w-sm mb-3 sm:mr-8 sm:mb-60 rounded-lg shadow flex flex-col`} style={{ backgroundImage: `url(./icons/background/${theme}/blurry-gradient.svg)`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <h5 className={`ml-3 mt-3 sm:mt-4 sm:ml-4 text-xs sm:text-base font-bold tracking-tight ${theme === "darkMode" ? "text-[#e4ae48]" : "text-gray-900"} whitespace-nowrap`}>{company.title}</h5>
         <div className={`ml-3 sm:ml-4 text-xs sm:text-base font-bold tracking-tight text-gray-400`}>{company.role}</div>
-        <div className={`ml-3 sm:ml-4 text-xs sm:text-base font-bold tracking-tight ${theme === "darkMode" ? "text-gray-400" : "text-gray-700"}`}>{company.date}</div>
+        <div className={`ml-3 sm:ml-4 text-xs sm:text-xs font-bold tracking-tight ${theme === "darkMode" ? "text-gray-400" : "text-gray-700"}`}>{company.date}</div>
+        {company.date2 && <div className={`ml-3 sm:ml-4 text-xs sm:text-xs font-bold tracking-tight ${theme === "darkMode" ? "text-gray-400" : "text-gray-700"}`}>{company.date2}</div>}
         {
             company.desc.map((description,index) => {
                 return (

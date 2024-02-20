@@ -20,7 +20,8 @@ export const WorkEx = ({theme}) => {
   const ocl = {
     title: "ONE 97 COMMUNICATIONS LIMITED",
     role: "SOFTWARE ENGINEER",
-    date: "Jan 2023 - Jan 2024",
+    date: "Jan 2023 - July 2023 (Internship)",
+    date2: "July 2023 - Jan 2024 (Full Time)",
     desc: [
       "Spearheaded the development of a blocking mechanism, achieving a significant 10% reduction in invalid database calls.",
       "Enhanced system resilience against potential threats, including mitigating the risk of DDoS flood attacks. ",
