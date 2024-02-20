@@ -6,6 +6,7 @@ export const Training = ({theme , images , interval}) => {
 
   useEffect(() => {
     let timer = null;
+    const currentRef = trainingRef.current;
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         timer = setInterval(() => {
@@ -16,19 +17,19 @@ export const Training = ({theme , images , interval}) => {
       }
     });
 
-    if (trainingRef.current) {
-      observer.observe(trainingRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
       if (timer) {
         clearInterval(timer);
       }
-      if (trainingRef.current) {
-        observer.unobserve(trainingRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
-  }, [interval]);
+  }, [interval, images.length]); 
 
   return (
     <div ref={trainingRef}>
