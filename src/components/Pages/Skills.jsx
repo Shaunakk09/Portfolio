@@ -6,15 +6,15 @@ export const Skills = ({theme}) => {
   const skills = [
     {
         title: "REACT",
-        percentage: "90"
-    },
-    {
-        title: "APACHE KAFKA",
         percentage: "85"
     },
     {
+        title: "APACHE KAFKA",
+        percentage: "75"
+    },
+    {
         title: "SPRING BOOT",
-        percentage: "95"
+        percentage: "90"
     },
     {
         title: "NODEJS",
@@ -26,7 +26,7 @@ export const Skills = ({theme}) => {
     },
     {
         title: "AWS",
-        percentage: "95"
+        percentage: "85"
     },
   ];
   const images = [
