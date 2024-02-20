@@ -8,7 +8,7 @@ export const Training = ({theme , images , interval}) => {
   useEffect(() => {
     images.forEach((image) => {
       const img = new Image();
-      img.src = image;
+      img.src = image.imageUrl;
     });
 
     let timer = null;
@@ -40,15 +40,16 @@ export const Training = ({theme , images , interval}) => {
 
   return (
     <div ref={trainingRef}>
-        <div className={`ml-0 mr-0 mb-5 sm:ml-80 sm:mr-80 sm:mb-20 h-56 sm:h-96 max-w-full rounded-lg shadow flex flex-col`} 
+        <div className={`ml-0 mr-0 mb-2 sm:ml-80 sm:mr-80 sm:mb-16 h-56 sm:h-96 max-w-full rounded-lg shadow flex flex-col`} 
             style={{ 
                 backgroundSize: '100% 100%',
-                backgroundImage: loaded ? `url(${images[currentImageIndex]})` : 'url(./icons/spinner.gif)', 
+                backgroundImage: loaded ? `url(${images[currentImageIndex].imageUrl})` : 'url(./icons/spinner.gif)', 
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat'
             }}>
-            <img src={images[currentImageIndex]} style={{display: 'none'}} onLoad={() => setLoaded(true)} alt="training" />
+            <img src={images[currentImageIndex].imageUrl} style={{display: 'none'}} onLoad={() => setLoaded(true)} alt="training" />
         </div>
-    </div>
+        <div className={`text-xs sm:text-base font-bold tracking-normal text-center ${theme === "darkMode" ? "text-gray-400" : "text-gray-900"} whitespace-nowrap`}>{images[currentImageIndex].title}</div>    
+      </div>
   )
 }

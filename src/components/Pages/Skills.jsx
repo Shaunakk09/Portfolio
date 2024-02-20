@@ -30,12 +30,30 @@ export const Skills = ({theme}) => {
     },
   ];
   const images = [
-    require("./icons/certifications/aws.png"),
-    require("./icons/certifications/django.png"),
-    require("./icons/certifications/kafka.png"),
-    require("./icons/certifications/nestJs.png"),
-    require("./icons/certifications/python.png"),
-    require("./icons/certifications/github.png"),
+    {
+        title: "AWS CLOUD PRACTITIONER",
+        imageUrl : require("./icons/certifications/aws.png")
+    },
+    {
+        title: "DJANGO",
+        imageUrl : require("./icons/certifications/django.png")
+    },
+    {
+        title: "KAFKA",
+        imageUrl : require("./icons/certifications/kafka.png")
+    },
+    {
+        title: "NEST JS",
+        imageUrl : require("./icons/certifications/nestJs.png")
+    },
+    {
+        title: "PYTHON",
+        imageUrl : require("./icons/certifications/python.png")
+    },
+    {
+        title: "GITHUB",
+        imageUrl : require("./icons/certifications/github.png")
+    },
   ];
   return (
     <>

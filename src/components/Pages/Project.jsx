@@ -33,7 +33,7 @@ export const Project = ({theme}) => {
     <div>
         <main id="projects">
             <section className="py-2 sm:ml-20 sm:mb-20">
-            <h5 className={`text-xl sm:text-2xl font-bold tracking-normal ${theme === "darkMode" ? "text-white" : "text-gray-900"} whitespace-nowrap`}>Projects</h5>
+            <h5 className={`text-xl sm:pt-20 sm:text-2xl font-bold tracking-normal ${theme === "darkMode" ? "text-white" : "text-gray-900"} whitespace-nowrap`}>Projects</h5>
             <div className="flex flex-wrap items-center justify-center gap-y-4 sm:gap-y-8 gap-x-8 sm:gap-x-36">
                 <ProjectCard theme={theme} projects={projects}/>
             </div>
