@@ -46,7 +46,7 @@ export const Menu = ({theme}) => {
                 </span>
 
                 <span class={`float-element ${isOpen ? 'active' : ''}`}>
-                <button className="scroll-button" data-target="work-ex" onClick={() => setIsOpen(!isOpen)}>Projects</button>
+                <button className="scroll-button" data-target="projects" onClick={() => setIsOpen(!isOpen)}>Projects</button>
                 </span>
             </div>
             </div>

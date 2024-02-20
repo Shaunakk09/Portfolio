@@ -45,7 +45,7 @@ export const Skills = ({theme}) => {
                 <SkillBar theme={theme} skills={skills}/>
             </div>
         </section>
-        <section className="py-2 mb-10 sm:ml-20 sm:mr-18 sm:mb-20">
+        <section className="py-2 mb-2 sm:ml-20 sm:mr-18 sm:mb-20">
             <h5 className={`m-2 sm:m-8 text-xl sm:text-2xl font-bold tracking-wide ${theme === "darkMode" ? "text-white" : "text-gray-900"} whitespace-nowrap text-center`}>Training & Certification</h5>
             <Training  images={images} interval= {2000} theme={theme}/>
         </section>

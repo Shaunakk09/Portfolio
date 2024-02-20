@@ -30,7 +30,6 @@ export const Card = ({theme,company}) => {
             }
         </div>
     </div>
-
     </>
   )
 }
