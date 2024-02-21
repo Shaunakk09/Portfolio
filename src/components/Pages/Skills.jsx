@@ -47,6 +47,10 @@ export const Skills = ({theme}) => {
         imageUrl : require("./icons/certifications/nestJs.png")
     },
     {
+        title: "REACT",
+        imageUrl : require("./icons/certifications/react.png")
+    },
+    {
         title: "PYTHON",
         imageUrl : require("./icons/certifications/python.png")
     },
