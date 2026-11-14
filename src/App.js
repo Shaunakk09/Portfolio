@@ -83,7 +83,7 @@ function CodeRain(){
     'ship(); learn(); improve(); repeat();', 'const growth = experiment × insight;',
     'SELECT insight FROM feedback WHERE real = true;','// BUILT DIFFERENT. BUILT TO SHIP.'
   ][i%12],left:(i*37+11)%95,top:(i*47+9)%90,speed:.45+(i%6)*.2,opacity:.12+(i%4)*.045})),[]);
-  useEffect(()=>{let raf=0;const update=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-innerHeight;setProgress(max>0?window.scrollY/max:0);});};window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);update();return()=>{cancelAnimationFrame(raf);window.removeEventListener('scroll',update);window.removeEventListener('resize',update);};},[]);
+  useEffect(()=>{let raf=0;const update=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-window.innerHeight;setProgress(max>0?window.scrollY/max:0);});};window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);update();return()=>{cancelAnimationFrame(raf);window.removeEventListener('scroll',update);window.removeEventListener('resize',update);};},[]);
   return <div className="code-rain" aria-hidden="true">{lines.map(l=><div key={l.id} className="code-line" style={{left:l.left+'%',top:l.top+'%',opacity:l.opacity,transform:`translate3d(${Math.sin(progress*10+l.id)*15}px,${progress*l.speed*-540}px,0)`}}>{l.text}</div>)}<div className="code-rain-fade"/></div>;
 }
 
