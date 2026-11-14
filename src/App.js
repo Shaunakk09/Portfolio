@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './portfolio.css';
 import ContributionAtlas from './ContributionAtlas';
+import PitchPlayArt from './PitchPlayArt';
 
 const GITHUB = 'https://github.com/Shaunakk09';
 const LINKEDIN = 'https://www.linkedin.com/in/shaunakk09/';
@@ -29,6 +30,17 @@ const featured = [
     outcome:'A working, evolving prototype and a testable product direction. This is an independent exploration, not a claim of commercial traction.',
     skills:['PRDs','Product prototyping','Journey mapping','Next.js','Supabase','Social UX'],
     website:'https://xchange-eosin.vercel.app/', linkLabel:'Explore prototype', kind:'Independent project'
+  },
+  {
+    id:'pitchplay', number:'03', label:'SPORTS TECH · PRODUCT PREVIEW', title:'PitchPlay',
+    subtitle:'From a formation on paper to a play in motion.',
+    description:'A touch-friendly football tactics studio for coaches, players and analysts. Build formations, draw movement, animate sequences and export plays.',
+    metrics:[['4','pitch formats'],['5','movement line types'],['50','documented domain tests']],
+    challenge:'A static whiteboard captures where players stand, but not how a play develops, when someone runs, or which pass comes next. Coaches need a clearer way to explain and share tactics.',
+    work:['Scoped a visual tactics editor around 5v5, 7v7, 9v9 and 11v11 formations with responsive, touch-friendly controls.','Built player placement, runs, passes, carries, zones and multi-phase animations with playback and timing controls.','Implemented local browser saving, import validation and exports including PNG, storyboard, GIF and project files; structured the app in React and TypeScript.'],
+    outcome:'An independent v0.2.0 preview with offline-capable boards and 50 documented domain tests. Cloud accounts and sharing are not enabled yet; the public repository contains the working source.',
+    skills:['Product scoping','Workflow UX','Interaction design','React','TypeScript','Canvas','Offline-first','Tactics animation'],
+    website:'https://github.com/Shaunakk09/pitchplay', linkLabel:'View PitchPlay source', kind:'Independent product · Early preview'
   }
 ];
 
@@ -116,10 +128,11 @@ function SitePreview({imageClass=''}){
   </div>;
 }
 function ProjectArt({id}){
+  if(id==='pitchplay')return <PitchPlayArt/>;
   if(id==='printlab')return <div className="feature-art art-printlab"><div className="feature-art-label"><img src={ASSETS+'print-lab-logo.png'} alt="The Print Lab real logo"/><span>BUILT AS A BUSINESS, NOT A MOCKUP</span></div><div className="print-site"><SitePreview/><img className="print-wall-detail" src={ASSETS+'print-lab-wall.jpg'} alt="Real The Print Lab poster collection" loading="lazy"/></div><div className="art-bottom"><span>EXPLORE THE LIVE PRODUCT</span><span>↗</span></div></div>;
   return <div className="feature-art art-xchange"><div className="xchange-label"><span>DESIGNED FOR BETTER CONVERSATIONS</span><img src={ASSETS+'xchange-mark.svg'} alt="XChange icon"/></div><img className="xchange-logo" src={ASSETS+'xchange-lockup.svg'} alt="XChange official logo"/><div className="xchange-roundtable"><div className="round-node node-a">IDEAS</div><div className="round-node node-b">PEOPLE</div><div className="round-node node-c">ROUNDTABLES</div><div className="round-core">✳</div></div><div className="xchange-art-bottom"><span>FROM CONNECTIONS TO CONVERSATIONS.</span><span>↗</span></div></div>;
 }
-function Featured({select}){return <section id="work" className="featured-section wrap"><SectionTitle number="01" eyebrow="FEATURED PRODUCTS" description="What I can actually show: a live business I founded and an independent product experiment.">I built <em>these.</em></SectionTitle><div className="featured-grid">{featured.map((p,i)=><Reveal key={p.id} className={'feature-card feature-'+p.id} delay={i*110}>
+function Featured({select}){return <section id="work" className="featured-section wrap"><SectionTitle number="01" eyebrow="FEATURED PRODUCTS" description="A live business and two independent products — with the problems, decisions and technical craft behind each.">I built <em>these.</em></SectionTitle><div className="featured-grid">{featured.map((p,i)=><Reveal key={p.id} className={'feature-card feature-'+p.id} delay={i*110}>
   <button onClick={()=>select(p)} className="art-button" aria-label={'Read '+p.title+' case study'}><ProjectArt id={p.id}/></button><div className="feature-metadata"><span>{p.number} / {p.label}</span><span>VIEW CASE STUDY ↗</span></div><div className="feature-summary"><div><h3>{p.title}</h3><p>{p.subtitle}</p><span>{p.kind}</span></div><button onClick={()=>select(p)} aria-label={'Open '+p.title} className="feature-open">↗</button></div><div className="feature-metrics">{p.metrics.map(([val,lab])=><div key={lab}><strong>{val}</strong><small>{lab}</small></div>)}</div>
 </Reveal>)}</div></section>}
 function Manifesto(){return <section className="manifesto"><div className="wrap"><Reveal><div className="section-index"><span>02 / MY POINT OF VIEW</span><span className="section-index-line"/></div><p>GREAT PRODUCTS<br/>HAPPEN WHERE <em>USER NEEDS</em><br/>MEET <span>REAL ENGINEERING.</span></p><div className="manifesto-foot"><span>ASK BETTER QUESTIONS. MAKE BOLDER THINGS.</span><span>✳</span></div></Reveal></div></section>}

@@ -1,0 +1,50 @@
+/* PitchPlay editorial case study — separate from the app's production UI */
+.pitchplay-art{background:radial-gradient(circle at 78% 4%,#3d5951 0,transparent 45%),#192b26;color:#f4f3ed;padding:24px 26px;display:flex;flex-direction:column;gap:14px;overflow:hidden;border:1px solid #426158;}
+.pp-card-top,.pp-card-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;z-index:1;position:relative}
+.pp-card-brand{display:flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:850;letter-spacing:-.055em;font-size:21px}
+.pp-card-brand strong>span{color:#dcf56a}
+.pp-brand-icon{display:grid;place-items:center;width:32px;height:32px;background:#def66c;color:#182d27;border-radius:8px;font-size:25px;font-family:var(--sans)}
+.pp-card-edition,.pp-board-topline,.pp-board-bottomline,.pp-card-foot{font-family:var(--mono),monospace;letter-spacing:.035em}
+.pp-card-edition{font-size:9px;color:#b6c8b9;display:flex;align-items:center;gap:8px}
+.pp-card-edition i{width:7px;height:7px;border-radius:50%;background:#ddf76d;box-shadow:0 0 12px #ddf76d}
+.pp-card-edition b{color:#668778}
+.pp-board-shell{margin:auto 0;position:relative;border:1px solid #6f8e7d;background:#f7f9f3;border-radius:13px;overflow:hidden;box-shadow:0 18px 40px #071c16a8;transform:rotate(-1.6deg) translateY(3px);transition:transform .55s cubic-bezier(.23,1,.32,1),box-shadow .55s}
+.art-button:hover .pp-board-shell{transform:rotate(0deg) translateY(-3px);box-shadow:0 24px 55px #071c16cf}
+.pp-board-topline{height:32px;background:#eef3ec;display:flex;justify-content:space-between;align-items:center;padding:0 14px;color:#2a3c35;font-size:9px;gap:6px}
+.pp-board-topline em{font-style:normal;color:#8f9d92;padding:0 4px}
+.pp-top-status{color:#6d7b71}
+.pp-field-frame{padding:8px;background:#142a22}
+.pp-pitch-svg{width:100%;height:auto;display:block;max-height:315px}
+.pp-board-bottomline{display:flex;align-items:center;gap:17px;padding:8px 14px;background:#f5f7f0;color:#425449;font-size:9px}
+.pp-board-bottomline>span:nth-child(3){margin-left:auto}
+.pp-play-chip{border-radius:30px;padding:5px 9px;background:#e5efa9;color:#28402b;font-weight:700}
+.pp-card-foot{font-size:10px;color:#e9f2e3}
+.pp-card-foot strong{color:#def66c}
+.pp-card-foot>span:last-child{font-size:9px;color:#abbeae}
+.pp-card-foot b{color:#def66c;font-size:18px;margin-left:5px}
+.pp-pass-path,.pp-run-path{animation:pp-dash 3.2s linear infinite}
+.pp-run-two{animation-delay:-1.4s}
+.pp-ball-group{animation:pp-ball 3.2s ease-in-out infinite}
+@keyframes pp-dash{to{stroke-dashoffset:-90}}
+@keyframes pp-ball{50%{transform:translate(9px,-7px)}}
+
+/* The original first two featured projects keep their side-by-side composition. */
+.featured-section .featured-grid .feature-xchange{padding-left:32px;padding-right:0}
+.featured-section .featured-grid .feature-pitchplay{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1.13fr) minmax(0,.87fr);grid-template-rows:auto 1fr auto;align-items:stretch;gap:0 40px;border-top:2px solid #b7b9b3;padding:42px 0 0;margin-top:64px}
+.featured-section .featured-grid .feature-pitchplay:before{display:none}
+.featured-section .featured-grid .feature-pitchplay>.art-button{grid-column:1;grid-row:1 / span 3;height:100%;min-height:400px}
+.featured-section .featured-grid .feature-pitchplay .feature-art{height:100%;min-height:400px}
+.featured-section .featured-grid .feature-pitchplay>.feature-metadata{grid-column:2;grid-row:1;align-self:start;padding-top:10px}
+.featured-section .featured-grid .feature-pitchplay>.feature-summary{grid-column:2;grid-row:2;align-self:center;padding-block:27px 14px}
+.featured-section .featured-grid .feature-pitchplay>.feature-metrics{grid-column:2;grid-row:3;align-self:end;margin:0;padding:26px 0 5px}
+.featured-section .featured-grid .feature-pitchplay .feature-summary h3{font-size:clamp(43px,4.5vw,75px)}
+.featured-section .featured-grid .feature-pitchplay .feature-summary p{font-size:clamp(16px,1.23vw,19px)}
+.featured-section .featured-grid .feature-pitchplay .feature-metrics strong{font-size:clamp(24px,2.5vw,36px)}
+.modal-inside .pitchplay-art{height:425px;min-height:425px}
+.modal-inside .pitchplay-art .pp-pitch-svg{max-height:272px}
+@media(max-width:1200px){.featured-section .featured-grid .feature-pitchplay{gap:0 26px}}
+@media(max-width:970px){.featured-section .featured-grid .feature-xchange{padding-left:18px;padding-right:0}}
+@media(max-width:830px){.featured-section .featured-grid .feature-pitchplay{display:block;padding:34px 0 0;margin-top:45px}.featured-section .featured-grid .feature-pitchplay>.art-button{height:auto;min-height:0}.featured-section .featured-grid .feature-pitchplay .feature-art{height:425px;min-height:0}.featured-section .featured-grid .feature-pitchplay>.feature-summary{padding-block:22px}.featured-section .featured-grid .feature-pitchplay>.feature-metrics{padding-top:18px}}
+@media(max-width:720px){.featured-section .featured-grid .feature-xchange{border:0;border-bottom:2px solid #b7b9b3;padding:0 0 45px}.featured-section .featured-grid .feature-pitchplay{border:0;margin-top:0;padding:3px 0 0}.featured-section .featured-grid .feature-pitchplay .feature-art{height:370px}.featured-section .featured-grid .feature-pitchplay .feature-summary h3{font-size:42px}.pp-card-edition{font-size:8px}.pp-card-foot>span:last-child{display:none}.modal-inside .pitchplay-art{min-height:0;height:315px}}
+@media(max-width:460px){.featured-section .featured-grid .feature-xchange{padding-bottom:35px}.featured-section .featured-grid .feature-pitchplay .feature-art{height:290px}.pitchplay-art{padding:13px;gap:8px}.pp-card-brand{font-size:15px}.pp-brand-icon{width:23px;height:23px;font-size:19px;border-radius:6px}.pp-card-edition{font-size:7px}.pp-board-topline{font-size:7px;height:26px;padding:0 8px}.pp-board-bottomline{font-size:8px;padding:6px 8px;gap:8px}.pp-field-frame{padding:5px}.pp-card-foot{font-size:8px}.modal-inside .pitchplay-art{height:260px}.modal-inside .pp-card-edition{display:none}}
+@media(prefers-reduced-motion:reduce){.pp-pass-path,.pp-run-path,.pp-ball-group{animation:none}.pp-board-shell,.art-button:hover .pp-board-shell{transform:none;transition:none}}
