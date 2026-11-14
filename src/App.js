@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './portfolio.css';
+import ContributionAtlas from './ContributionAtlas';
 
 const GITHUB = 'https://github.com/Shaunakk09';
 const LINKEDIN = 'https://www.linkedin.com/in/shaunakk09/';
@@ -151,7 +152,8 @@ function GithubGraph(){
  },[repo]);
  const indexBySha=useMemo(()=>new Map(commits.map((c,i)=>[c.sha,i])),[commits]);
  const paths=useMemo(()=>commits.flatMap((c,i)=>c.parents.map((parent,j)=>({from:i,to:indexBySha.get(parent),j})).filter(edge=>Number.isInteger(edge.to)&&edge.to>edge.from)),[commits,indexBySha]);
- return <section id="git-graph" className="git-section wrap"><SectionTitle number="06" eyebrow="ACTUAL GIT HISTORY" description="Switch between public repositories. Nodes and connections are generated from real commit parent SHAs — not a fake activity heatmap.">Built one <em>commit</em> at a time.</SectionTitle>
+ return <section id="git-graph" className="git-section wrap"><SectionTitle number="06" eyebrow="ACTUAL GIT HISTORY" description="Explore my real GitHub contribution calendar, then follow the commit history behind the work.">Built one <em>commit</em> at a time.</SectionTitle>
+  <ContributionAtlas/>
   <Reveal className="git-terminal"><div className="terminal-toolbar"><span className="traffic"><i/><i/><i/></span><span>~/shaunak/workbench</span><span className="terminal-online"><i/> LIVE GITHUB API</span></div><div className="terminal-headline"><div><span>REPOSITORY EXPLORER</span><h3>git log <em>--graph</em></h3></div><a href={GITHUB} target="_blank" rel="noreferrer">OPEN GITHUB ↗</a></div>
    <div className="repo-tabs" aria-label="GitHub repository"><span className="active">● SHAUNAKK09 / PORTFOLIO</span></div>
    <div className="commit-panel" aria-live="polite">{loading?<div className="commit-message-state">FETCHING HISTORY <span className="blink">▋</span></div>:error?<div className="commit-message-state">{error}. <a href={`${GITHUB}/${repo}/commits`} target="_blank" rel="noreferrer">See commits directly ↗</a></div>:commits.length===0?<div className="commit-message-state">No public commit data was returned.</div>:<div className="graph-list">
