@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# Shaunak Ahluwalia — portfolio redesign
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A complete React rebuild of the original CRA portfolio, positioning Shaunak as a product thinker with engineering depth. No additional animation libraries are needed.
 
-## Available Scripts
+## Start
 
-In the project directory, you can run:
+```bash
+npm install
+npm start
+```
 
-### `npm start`
+Production: `npm run build`. Deploy the root folder to Netlify or Vercel as a Create React App project (build command `npm run build`, publish directory `build`).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Highlights
+- Responsive, editorial, scroll-driven site with a moving code-rain layer and reveal-on-scroll.
+- Four interactive case studies including The Print Lab AI; results and dates based on the supplied resume.
+- Product + engineering capabilities, chronology, and contact links.
+- GitHub terminal that fetches the newest commits from **public** repositories at runtime, with historically verified fallbacks when GitHub is rate-limited.
+- Reduced-motion support, keyboard-accessible modal, offsite link safety, no tracking scripts.
+- All project screenshots shown in the cards are clearly labelled illustrative/concept visuals, not screenshots of real third-party interfaces.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Integrate into existing repository
 
-### `npm test`
+Replace `src/App.js`, `src/index.js` and `public/index.html`; add `src/portfolio.css`; optionally use the new `package.json` and this README. Existing files/assets may remain unchanged and are unused by the new app.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Important
 
-### `npm run build`
+GitHub public API is rate-limited for unauthenticated browsers. The terminal displays real commits when available, or an explicit fallback using verified commits in the 2024 Portfolio repository. It does not expose private repositories or invent contributions.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The resume PDF is **not** published with the site: it contains personal details not needed for the public portfolio. If you want a public download, create a redacted resume first.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Update `cases` in `src/App.js` as you gather further case-study artifacts, discovery evidence, interview notes, and product screenshots. Business outcomes in this build are resume claims and should be checked against the latest internal data before public launch.
