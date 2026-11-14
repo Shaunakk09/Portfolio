@@ -1,0 +1,18 @@
+<svg width="520" height="148" viewBox="0 0 520 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="20" y1="18" x2="120" y2="124" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#18C58F"/>
+      <stop offset="0.52" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#6D5DFC"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="128" height="128" rx="38" fill="#0A1020"/>
+  <path d="M43 43C57 43 65 51 72 63L97 103" stroke="url(#g)" stroke-width="16" stroke-linecap="round"/>
+  <path d="M105 43C91 43 83 51 76 63L51 103" stroke="url(#g)" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="42" cy="43" r="7.5" fill="#18C58F"/>
+  <circle cx="106" cy="43" r="7.5" fill="#6D5DFC"/>
+  <path d="M85 108H103V90" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="168" y="94" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="760" letter-spacing="-3.4" fill="#0C1424">X</text>
+  <text x="211" y="94" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="760" letter-spacing="-3.4" fill="#3478EF">Change</text>
+  <text x="171" y="122" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="0.3" fill="#788594">THINK FIRST. THEN THINK TOGETHER.</text>
+</svg>

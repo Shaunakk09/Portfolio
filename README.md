@@ -1,32 +1,40 @@
-# Shaunak Ahluwalia — portfolio redesign
+# Shaunak Ahluwalia — Product × Engineering Portfolio
 
-A complete React rebuild of the original CRA portfolio, positioning Shaunak as a product thinker with engineering depth. No additional animation libraries are needed.
+A creative, responsive portfolio for Shaunak Ahluwalia. Built on React 18 / Create React App, preserving the original repo assets and standard Netlify `npm run build` pipeline.
 
-## Start
+## What is included
+- Personal hero with a real headshot, scroll-reactive code fragments, semantic structure and mobile-first typography.
+- Two genuine independent product case studies: The Print Lab AI and XChange. The Print Lab brand art is copied from the owner's `FrameX` repository; XChange brand SVGs come from the owner's `xchange` repository.
+- Real website screenshot loaded via third-party thumbnail service when available, with a local photographic fallback; actual wall art photography is from FrameX. A screenshot service is an external dependency and is not guaranteed to be available on every visit.
+- Confidential professional work at Sumtracker and Paytm presented separately as employment experience.
+- Full internships and earlier engineering project archive with original artwork.
+- Live, repository-switchable GitHub commit graph generated from public GitHub commit parent SHAs (works without GitHub credentials, within GitHub's anonymous rate limit).
+- Certifications vs. completed learning courses distinguished, and volunteering included.
+- Accessibility: reduced-motion support, responsive navigation, keyboard-operable case-study modals, live region for commit fetching.
+
+## Develop
 
 ```bash
 npm install
 npm start
 ```
 
-Production: `npm run build`. Deploy the root folder to Netlify or Vercel as a Create React App project (build command `npm run build`, publish directory `build`).
+## Deploy
 
-## Highlights
-- Responsive, editorial, scroll-driven site with a moving code-rain layer and reveal-on-scroll.
-- Four interactive case studies including The Print Lab AI; results and dates based on the supplied resume.
-- Product + engineering capabilities, chronology, and contact links.
-- GitHub terminal that fetches the newest commits from **public** repositories at runtime, with historically verified fallbacks when GitHub is rate-limited.
-- Reduced-motion support, keyboard-accessible modal, offsite link safety, no tracking scripts.
-- All project screenshots shown in the cards are clearly labelled illustrative/concept visuals, not screenshots of real third-party interfaces.
+```bash
+npm run build
+```
 
-## Integrate into existing repository
+Netlify build command: `npm run build`; publish directory: `build`.
 
-Replace `src/App.js`, `src/index.js` and `public/index.html`; add `src/portfolio.css`; optionally use the new `package.json` and this README. Existing files/assets may remain unchanged and are unused by the new app.
+## Content notes
 
-## Important
+All company outcomes and data are sourced from the user's resume; company product mock-ups were deliberately removed to avoid confusing employment work with independently owned products. Clothes Box Foundation has been included conservatively because dates and specific responsibilities have not yet been supplied. Older project screenshot assets remain in `src/components/Pages/icons/projects`. Personal headshot and Navjyoti logo were supplied by the user.
 
-GitHub public API is rate-limited for unauthenticated browsers. The terminal displays real commits when available, or an explicit fallback using verified commits in the 2024 Portfolio repository. It does not expose private repositories or invent contributions.
+## Source provenance
 
-The resume PDF is **not** published with the site: it contains personal details not needed for the public portfolio. If you want a public download, create a redacted resume first.
+- The Print Lab brand assets: `Shaunakk09/FrameX` (`public/the-print-lab-logo-light-mode.png`, `public/hero-poster-wall.jpg`, `public/customer-prints/gojo.jpeg`).
+- XChange brand assets: `Shaunakk09/xchange` (`public/xchange-mark.svg`, `public/xchange-lockup.svg`). The requested Focusback repository was not found in the connected GitHub account, so the actual XChange assets were sourced from its own repository.
+- Headshot and Navjyoti Foundation logo: user supplied.
 
-Update `cases` in `src/App.js` as you gather further case-study artifacts, discovery evidence, interview notes, and product screenshots. Business outcomes in this build are resume claims and should be checked against the latest internal data before public launch.
+No GitHub private data or credentials are exposed through this public site.

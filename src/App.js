@@ -1,149 +1,183 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './portfolio.css';
+import codebookImage from './components/Pages/icons/projects/CodeBook.png';
+import cinemateImage from './components/Pages/icons/projects/Cinemate.png';
+import sentimentImage from './components/Pages/icons/projects/Sentiment.png';
+import taskmateImage from './components/Pages/icons/projects/TaskMate.png';
 
-const GH = 'https://github.com/Shaunakk09';
+const GITHUB = 'https://github.com/Shaunakk09';
 const LINKEDIN = 'https://www.linkedin.com/in/shaunakk09/';
-const EMAIL = 'SHAUNAK001@e.ntu.edu.sg';
+const EMAIL = 'shaunak001@e.ntu.edu.sg';
+const ASSETS = '/portfolio-assets/';
 
-const cases = [
+const featured = [
   {
-    id: 'printlab', no: '01', eyebrow: 'FOUNDER · 0→1 PRODUCT', title: 'The Print Lab AI', kicker: 'From blank walls to a business.',
-    desc: 'An AI-powered wall-art discovery and personalisation platform — and a real D2C business built from zero.',
-    url: 'https://www.theprintlab.in/', linkText: 'Visit The Print Lab', year: '2026 — NOW', kind: 'Founder / Product / Engineering',
-    stats: [['10×','growth in 4 months'],['12k+','design catalogue'],['60%','revenue prepaid']],
-    problem: 'Buying wall art can be a frustrating discovery problem: endless browsing, little context about what works in your space, and friction at checkout.',
-    approach: ['Founded the business and owned the product roadmap, catalogue architecture and end-to-end customer journey.', 'Designed AI-driven discovery and poster customisation experiences across a catalogue of 12,000+ designs.', 'Reworked cash-on-delivery operations, partnerships, packaging, delivery coordination and customer support.'],
-    impact: 'Scaled the brand 10× in four months to around 100 monthly orders (S$2,523 in monthly order value). Reduced return-to-origin losses to 2.5% and moved 60% of revenue to prepaid.',
-    skills: ['0→1 strategy','Product discovery','AI integration','Growth','Unit economics','D2C operations'], tone: 'orange'
+    id:'printlab', number:'01', label:'FOUNDED & BUILT · 2026—NOW', title:'The Print Lab AI',
+    subtitle:'From a customer problem to a growing D2C business.',
+    description:'AI-powered wall art discovery, customisation and fulfilment. I own everything from product decisions and the website to growth, operations and customer support.',
+    metrics:[['10×','growth in four months'],['12,000+','AI-generated designs'],['2.5%','return-to-origin losses']],
+    challenge:'Finding artwork that fits a room and your personality takes time. Getting customers to buy, pay and receive a physical product adds a whole second set of constraints.',
+    work:['Founded the business and designed the customer journey from search and personalisation to checkout.','Defined product requirements for AI-powered discovery and the catalogue of over 12,000 designs.','Reworked cash-on-delivery operations, printing partnerships, packaging, support and fulfilment to improve economics.'],
+    outcome:'10× growth in four months, reaching about 100 monthly orders worth S$2,523. Shifted 60% of revenue to prepaid and reduced return-to-origin losses to 2.5%.',
+    skills:['Product discovery','0→1 product','AI integration','Conversion','D2C operations','Unit economics'],
+    website:'https://theprintlab.in/', linkLabel:'Visit live website', kind:'Personal venture'
   },
   {
-    id: 'sumtracker', no: '02', eyebrow: 'B2B SAAS · WORKFLOW DESIGN', title: 'Sumtracker', kicker: 'Making inventory feel simple.',
-    desc: 'Shipping less-friction inventory operations for merchants moving products across multiple sales channels.',
-    url: 'https://www.sumtracker.com/', linkText: 'Explore Sumtracker', year: '2025 — 2026', kind: 'Frontend Engineer / Product collaboration',
-    stats: [['200+','new customers from Stock Take'],['16%','conversion uplift']],
-    problem: 'Inventory audits and synchronisation introduce costly friction for merchants operating across stores, marketplaces and warehouses.',
-    approach: ['Led frontend development of the Stock Take workflow to help teams audit warehouse inventory.', 'Simplified inventory synchronisation journeys spanning Shopify, Amazon, Walmart, eBay and Etsy.', 'Translated complex operational steps into clearer product interactions.'],
-    impact: 'Stock Take attracted 200+ new customers and contributed to onboarding Ozdingo. Simplified synchronisation workflows helped boost conversion by 16%.',
-    skills: ['B2B SaaS','Workflow UX','React','Cross-functional delivery','Conversion'], tone: 'mint'
-  },
-  {
-    id: 'paytm', no: '03', eyebrow: 'FINTECH · PRODUCTS AT SCALE', title: 'Paytm', kicker: 'Engineering for millions.',
-    desc: 'Built conversion-focused insurance experiences and tooling that let product teams ship without engineering bottlenecks.',
-    url: 'https://paytm.com/', linkText: 'Visit Paytm', year: '2024 — 2025', kind: 'Software Engineer',
-    stats: [['8.5M','target users'],['23%','conversion improvement'],['60%','faster rollout']],
-    problem: 'Large-scale financial products need fast, understandable customer flows — and product teams need a way to iterate without lengthy UI release cycles.',
-    approach: ['Built interfaces for a life-insurance journey targeting 8.5 million whitelisted users.', 'Created a JSON-driven page builder so product teams could update UI structures rapidly.', 'Led a self-initiated UI performance programme and contributed to a Backend-for-Frontend architecture.'],
-    impact: 'Life insurance reached 400 policies per day within six months. UI improvements increased conversion by 23%; the page builder accelerated rollout by 60% and cut development time by 40%.',
-    skills: ['Experimentation','Design systems','React','BFF architecture','Performance','Product tooling'], tone: 'violet'
-  },
-  {
-    id: 'xchange', no: '04', eyebrow: 'INDEPENDENT BUILD · PRODUCT EXPERIMENT', title: 'XChange', kicker: 'Better conversations, by design.',
-    desc: 'Exploring a social product that turns professional connections into thoughtful, structured roundtable conversations.',
-    url: 'https://xchange-eosin.vercel.app/', linkText: 'View prototype', year: 'EXPLORATION', kind: 'Independent product / Prototype',
-    stats: [['0→1','product exploration'],['UX','journey-first design']],
-    problem: 'Most professional networks optimise for collecting connections, not generating meaningful conversations or shared insight.',
-    approach: ['Mapped invitation, acceptance and discussion flows around two-sided participation.', 'Explored onboarding, discovery, profiles and roundtable interaction patterns.', 'Built and iterated a web prototype using Next.js and Supabase.'],
-    impact: 'An evolving product experiment — presented as a prototype rather than a launched or commercially validated business.',
-    skills: ['PRD','Customer journeys','Next.js','Supabase','Product prototyping'], tone: 'blue'
+    id:'xchange', number:'02', label:'PRODUCT EXPERIMENT · IN PROGRESS', title:'XChange',
+    subtitle:'What if networking led to better conversations?',
+    description:'A social product experiment that takes people from discovering others to joining purposeful roundtables — instead of collecting static connections.',
+    metrics:[['0→1','concept to prototype'],['2-sided','invitation flow'],['Next.js','& Supabase stack']],
+    challenge:'Professional networks make it easy to connect, but much harder to turn those connections into high-quality interactions.',
+    work:['Mapped the invite, accept, connection and roundtable journey for both participants.','Built onboarding, profile, network and discovery flows with a Next.js and Supabase stack.','Worked through product requirements and UX iterations, using functional workflows rather than static demo states.'],
+    outcome:'A working, evolving prototype and a testable product direction. This is an independent exploration, not a claim of commercial traction.',
+    skills:['PRDs','Product prototyping','Journey mapping','Next.js','Supabase','Social UX'],
+    website:'https://xchange-eosin.vercel.app/', linkLabel:'Explore prototype', kind:'Independent project'
   }
 ];
 
-const timeline = [
-  {date:'2026 — PRESENT',company:'The Print Lab AI',role:'Founder',note:'Owning the full loop: customer problem → product → revenue → operations.',tag:'BUILD'},
-  {date:'2026 — PRESENT',company:'Nanyang Business School',role:'MBA · NTU, Singapore',note:'Strengthening strategy, business fundamentals and product decision-making.',tag:'LEARN'},
-  {date:'2025 — 2026',company:'Sumtracker',role:'Frontend Engineer',note:'Turned complex multichannel inventory workflows into easier-to-use product experiences.',tag:'SHIP'},
-  {date:'2024 — 2025',company:'Paytm',role:'Software Engineer',note:'Built conversion-oriented fintech experiences and internal product tooling.',tag:'SCALE'}
-];
-const capabilities = [
-  {n:'01',title:'Find the right problem',text:'Customer journeys, problem framing, research, opportunities and prioritisation.',tags:['Discovery','JTBD','PRDs','Strategy']},
-  {n:'02',title:'Make the trade-offs',text:'Connect business impact, user experience, feasibility and operating constraints.',tags:['Roadmaps','Growth','Metrics','Unit economics']},
-  {n:'03',title:'Build it for real',text:'Prototype, engineer, test and ship with an understanding of what actually breaks.',tags:['React','Next.js','TypeScript','Python','AWS']}
+const employment = [
+  {company:'Sumtracker',role:'Frontend Engineer',date:'NOV 2025 — APR 2026',type:'B2B SaaS',description:'Led frontend work on Stock Take and improved inventory synchronisation workflows for merchants using Shopify, Amazon, Walmart, eBay and Etsy.',impact:'Stock Take attracted 200+ new customers; workflow improvements contributed to a reported 16% conversion uplift.',tags:['React','Workflow design','Cross-functional delivery'],n:'01'},
+  {company:'Paytm',role:'Software Engineer',date:'JAN 2024 — SEP 2025',type:'Fintech',description:'Built life-insurance interfaces for an audience of 8.5 million whitelisted users. Delivered a JSON-based page builder that enabled product teams to iterate faster, plus UI performance improvements and BFF architecture.',impact:'23% uplift in conversion; page-builder work accelerated feature rollout by 60% and reduced development time by 40%. Rising Star award.',tags:['React','Platform engineering','Performance'],n:'02'},
+  {company:'One97 Communications (Paytm)',role:'Software Engineer · Internship → Full-time',date:'JAN 2023 — JAN 2024',type:'Early career',description:'Started as an engineering intern (Jan–Jul 2023), then became a full-time engineer (Jul 2023–Jan 2024). Worked with backend services and event-driven systems.',impact:'Hands-on work across application reliability, Kafka, AWS and MongoDB.',tags:['Kafka','AWS','MongoDB'],n:'03'},
+  {company:'Ernst & Young',role:'Software Engineer Intern',date:'NOV 2021 — JAN 2022',type:'Internship',description:'Contributed to a document-management portal and worked with data models and retrieval workflows using Django and MongoDB.',impact:'Early experience translating enterprise requirements into software.',tags:['Python','Django','MongoDB'],n:'04'},
+  {company:'Sciffer Analytics',role:'Data Labelling Intern',date:'JAN 2022 — JAN 2023',type:'Internship',description:'Early industry experience in data labelling and applied data workflows.',impact:'Built an appreciation for data quality and the work behind useful machine-learning systems.',tags:['Data','Quality'],n:'05'}
 ];
 
-const Arrow = ({ diagonal=false }) => <span aria-hidden="true" className="arrow">{diagonal ? '↗' : '→'}</span>;
+const legacy = [
+  {title:'CodeBook',category:'ECOMMERCE',desc:'An online bookstore experience.',img:codebookImage,href:'https://codebook-shaunakk09.netlify.app/',tag:'React'},
+  {title:'Cinemate',category:'DISCOVERY',desc:'Explore films, shows and entertainment.',img:cinemateImage,href:'https://cinemate-shaunakk09.netlify.app/',tag:'Frontend'},
+  {title:'TaskMate',category:'PRODUCTIVITY',desc:'A lightweight way to keep tasks in order.',img:taskmateImage,href:'https://taskmate-shaunakk09.netlify.app/',tag:'React'},
+  {title:'Sentiment Analysis',category:'NLP / DATA',desc:'Understand the sentiment behind reviews.',img:sentimentImage,href:GITHUB+'/sentiment_analysis',tag:'Python'}
+];
 
-function Reveal({children, className='', delay=0, as:Tag='div', ...rest}) {
-  const ref = useRef(null);
+const certifications = [
+  {name:'AWS Certified Cloud Practitioner',issuer:'Amazon Web Services',date:'JAN 2024 — JAN 2027',type:'Certification',logo:'aws'},
+  {name:'React JS Masterclass: Zero to Job Ready with 10 Projects',issuer:'Udemy',date:'FEB 2024',type:'Course',logo:'React'},
+  {name:'NestJS: The Complete Developer’s Guide',issuer:'Udemy',date:'JAN 2024',type:'Course',logo:'Node'},
+  {name:'Introduction to Python: Fundamentals',issuer:'edX',date:'APR 2020',type:'Verified course',logo:'py'},
+  {name:'Ultimate AWS Certified Cloud Practitioner CLF-C02',issuer:'Udemy',date:'JAN 2024',type:'Course',logo:'aws'},
+  {name:'Master Git and GitHub in 5 Days',issuer:'Udemy',date:'DATE NOT LISTED',type:'Course',logo:'git'},
+  {name:'Apache Kafka Series — KSQL on ksqlDB',issuer:'Udemy',date:'FEB 2023',type:'Course',logo:'kafka'},
+  {name:'Web Application Technologies and Django',issuer:'University of Michigan',date:'NOV 2021',type:'Course',logo:'web'}
+];
+
+const skillGroups = [
+  {id:'01',title:'Product thinking',intro:'Ask the right questions before building the thing.',items:['Product requirements','User journeys','Problem framing','Roadmapping','Prioritisation','Experimentation']},
+  {id:'02',title:'Technical fluency',intro:'Understand the architecture, constraints and trade-offs.',items:['React / Next.js','TypeScript / JavaScript','Python','Node.js / Django','SQL / MongoDB','AWS / Kafka']},
+  {id:'03',title:'Business ownership',intro:'Care about what happens after a feature ships.',items:['Growth','Conversion','D2C operations','Unit economics','Stakeholder alignment','Analytics']}
+];
+
+function Arrow({diagonal=false}) { return <span aria-hidden="true" className="arrow">{diagonal?'↗':'→'}</span>; }
+function Reveal({children,className='',as:Component='div',delay=0,...rest}) {
+  const ref=useRef(null);
   useEffect(()=>{
-    const element=ref.current;if(!element)return;
-    if(!('IntersectionObserver' in window)){element.classList.add('is-visible');return;}
-    const observer=new IntersectionObserver(([entry])=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}, {threshold:.08,rootMargin:'0px 0px -35px 0px'});
-    observer.observe(element);return()=>observer.disconnect();
+    const el=ref.current;if(!el)return;
+    if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.classList.add('is-visible');return;}
+    const ob=new IntersectionObserver(([entry])=>{if(entry.isIntersecting){el.classList.add('is-visible');ob.unobserve(el);}}, {threshold:.08,rootMargin:'0px 0px -34px 0px'});
+    ob.observe(el);return()=>ob.disconnect();
   },[]);
-  return <Tag ref={ref} className={'reveal '+className} style={{'--reveal-delay':delay+'ms'}} {...rest}>{children}</Tag>;
+  return <Component ref={ref} className={'reveal '+className} style={{'--delay':delay+'ms'}} {...rest}>{children}</Component>;
 }
-
+function SectionTitle({number,eyebrow,children,description,dark=false}) {
+  return <Reveal className={'section-title '+(dark?'section-title-dark':'')}>
+    <div className="section-index"><span>{number} / {eyebrow}</span><span className="section-index-line"/></div>
+    <div className="section-title-row"><h2>{children}</h2>{description&&<p>{description}</p>}</div>
+  </Reveal>;
+}
+function ScrollIndicator(){const [progress,setProgress]=useState(0);useEffect(()=>{
+  let raf=0;const update=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);setProgress(window.scrollY/max);});};
+  window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);update();return()=>{window.removeEventListener('scroll',update);window.removeEventListener('resize',update);cancelAnimationFrame(raf);};
+},[]);return <div className="scroll-indicator" style={{transform:`scaleX(${progress})`}} aria-hidden="true"/>;}
 function CodeRain(){
   const [progress,setProgress]=useState(0);
-  const lines=useMemo(()=>Array.from({length:17},(_,i)=>({id:i,text:[
-    'const intention = "build meaningful things";', 'while (curiosity) { prototype(); iterate(); }',
-    'product.fit = listen(users) + execute();','if (friction) simplify(experience);',
-    '010101 101100 001011 110010 0101','git commit -m "ship the next iteration"',
-    'impact > output && empathy > assumptions','function bridge(product, engineering) { return value; }',
-    'ship(); learn(); improve(); repeat();', 'const growth = experiment × insight;',
-    'SELECT insight FROM feedback WHERE real = true;','// BUILT DIFFERENT. BUILT TO SHIP.'
-  ][i%12],left:(i*37+11)%95,top:(i*47+9)%90,speed:.45+(i%6)*.2,opacity:.12+(i%4)*.045})),[]);
-  useEffect(()=>{let raf=0;const update=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-window.innerHeight;setProgress(max>0?window.scrollY/max:0);});};window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);update();return()=>{cancelAnimationFrame(raf);window.removeEventListener('scroll',update);window.removeEventListener('resize',update);};},[]);
-  return <div className="code-rain" aria-hidden="true">{lines.map(l=><div key={l.id} className="code-line" style={{left:l.left+'%',top:l.top+'%',opacity:l.opacity,transform:`translate3d(${Math.sin(progress*10+l.id)*15}px,${progress*l.speed*-540}px,0)`}}>{l.text}</div>)}<div className="code-rain-fade"/></div>;
+  const lines=useMemo(()=>Array.from({length:20},(_,i)=>({id:i,text:[
+    'while (curiosity) { build(); learn(); }','const empathy = strategy + execution;',
+    '00110100 10101010 01100101','if (friction) simplify(product);',
+    'git commit -m "make it better"','function ship(idea) { return iterate(idea); }',
+    'const northStar = customer.value;','SELECT insight FROM experiments;',
+    '<Product thinking={true} code={true} />','roadmap.push(customerFeedback);'
+  ][i%10],left:(i*29+8)%96,top:(i*43+11)%87,speed:.55+(i%5)*.2,opacity:.11+(i%4)*.035})),[]);
+  useEffect(()=>{if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return undefined;
+    let raf=0;const update=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>setProgress(window.scrollY/Math.max(1,document.documentElement.scrollHeight-window.innerHeight)));};
+    window.addEventListener('scroll',update,{passive:true});update();return()=>{window.removeEventListener('scroll',update);cancelAnimationFrame(raf);};
+  },[]);
+  return <div className="code-rain" aria-hidden="true">{lines.map(line=><span key={line.id} className="code-line" style={{left:line.left+'%',top:line.top+'%',opacity:line.opacity,transform:`translate3d(${Math.sin(progress*11+line.id)*19}px,${progress*line.speed*-740}px,0)`}}>{line.text}</span>)}</div>;
 }
-
-function MagneticLink({href,children,external=false,className=''}){return <a className={className} href={href} {...(external?{target:'_blank',rel:'noopener noreferrer'}:{})}>{children}</a>}
-
-function Navbar({openMenu,setOpenMenu}){
-  const links=[['Work','#work'],['Approach','#approach'],['Journey','#journey'],['Git log','#git-log']];
-  return <header className="nav-shell"><nav className="nav wrap" aria-label="Main navigation">
-    <a href="#top" className="wordmark" aria-label="Shaunak Ahluwalia, back to top"><span className="wordmark-symbol">s<span>.</span></span><span className="wordmark-small">SHAUNAK<br/>AHLUWALIA</span></a>
-    <div className={'nav-links '+(openMenu?'nav-links-open':'')}>{links.map(([t,h])=><a key={t} href={h} onClick={()=>setOpenMenu(false)}>{t}</a>)}<a className="nav-mobile-contact" href="#contact" onClick={()=>setOpenMenu(false)}>Let's connect ↗</a></div>
-    <a href="#contact" className="nav-cta">LET'S TALK <Arrow diagonal/></a>
-    <button className="mobile-menu" aria-label={openMenu?'Close menu':'Open menu'} aria-expanded={openMenu} onClick={()=>setOpenMenu(v=>!v)}>{openMenu?'CLOSE':'MENU'} <span>{openMenu?'×':'+'}</span></button>
-  </nav></header>;
+function Nav(){const [open,setOpen]=useState(false);const links=[['Work','#work'],['Experience','#experience'],['Projects','#archive'],['Git graph','#git-graph'],['About','#about']];return <header className="nav-shell"><nav className="nav wrap" aria-label="Main navigation">
+  <a className="wordmark" href="#top" aria-label="Shaunak Ahluwalia home"><b>S<span>.</span></b><span>SHAUNAK<br/>AHLUWALIA</span></a>
+  <div className={'nav-links '+(open?'nav-links-open':'')}>{links.map(([label,url])=><a key={label} href={url} onClick={()=>setOpen(false)}>{label}</a>)}<a className="nav-mobile-link" href="#contact" onClick={()=>setOpen(false)}>Contact ↗</a></div>
+  <a className="nav-cta" href="#contact">LET'S TALK <Arrow diagonal/></a>
+  <button className="nav-toggle" onClick={()=>setOpen(!open)} aria-label={open?'Close navigation':'Open navigation'} aria-expanded={open}>{open?'CLOSE':'MENU'} <span>{open?'×':'+'}</span></button>
+</nav></header>}
+function Hero(){return <section id="top" className="hero"><CodeRain/><div className="hero-texture" aria-hidden="true"/><div className="wrap hero-inner">
+  <div className="hero-intro"><span className="live-dot"/> PRODUCT THINKER <span>/</span> ENGINEER <span>/</span> FOUNDER</div>
+  <div className="hero-main"><div className="hero-copy"><div className="hero-edition">PORTFOLIO <span>2026</span> &nbsp;—&nbsp; SINGAPORE</div><h1>I MAKE<br/><em>IDEAS</em><br/>REAL<span className="hero-period">.</span></h1><p className="hero-sub">Hey, I'm <strong>Shaunak Ahluwalia.</strong> I understand how products should work, how businesses grow, and what it actually takes to build.</p><div className="hero-ctas"><a className="primary-cta" href="#work">EXPLORE MY WORK <Arrow diagonal/></a><a className="text-cta" href={LINKEDIN} target="_blank" rel="noreferrer">GET TO KNOW ME ↗</a></div></div>
+  <div className="hero-photo-area"><div className="portrait-orbit portrait-orbit-one"/><div className="portrait-orbit portrait-orbit-two"/><div className="portrait-badge">ENGINEERING<br/><i>×</i> PRODUCT</div><div className="portrait-frame"><img src={ASSETS+'shaunak-portrait.jpg'} alt="Shaunak Ahluwalia in a grey suit" fetchPriority="high"/></div><span className="portrait-caption">HI, I'M SHAUNAK. <span>✳</span> STILL BUILDING.</span></div></div>
+  <div className="hero-bottomline"><span>SCROLL TO EXPLORE ↓</span><span>THE STRATEGY <i>MEETS</i> THE BUILD.</span><span>01 / 09</span></div>
+</div></section>}
+function StudioMarquee(){return <div className="marquee" aria-hidden="true"><div className="marquee-track">{Array.from({length:6},(_,i)=><span key={i}>THINK IN SYSTEMS <b>✳</b> BUILD WITH INTENT <b>✳</b> SHIP & LEARN <b>✳</b></span>)}</div></div>}
+function SitePreview({imageClass=''}){
+  const [error,setError]=useState(false);
+  return <div className={'live-browser '+imageClass}><div className="live-browser-top"><span className="traffic"><i/><i/><i/></span><span className="url-bar">theprintlab.in</span><span>↗</span></div>
+    <div className="live-browser-viewport">{!error?<img src="https://image.thum.io/get/width/1200/crop/850/noanimate/https://theprintlab.in/" onError={()=>setError(true)} alt="Screenshot of The Print Lab live website" loading="lazy" referrerPolicy="no-referrer"/>:<div className="fallback-web"><img src={ASSETS+'print-lab-wall.jpg'} alt="Actual wall art from The Print Lab" loading="lazy"/><span>SEARCH ANYTHING.<br/>WE TURN IT INTO WALL ART.</span></div>}</div>
+  </div>;
 }
-
-function Hero(){return <section id="top" className="hero"><CodeRain/><div className="hero-grain" aria-hidden="true"/><div className="hero-content wrap">
-  <div className="hero-intro"><span className="status-dot"/> AVAILABLE TO CONNECT <span className="intro-divider">/</span> SINGAPORE <span className="intro-divider">/</span> 2026</div>
-  <h1 className="hero-title"><span className="title-line">I THINK <span className="serif-italic">product.</span></span><span className="title-line outline-line">I BUILD <em>TECH.</em></span></h1>
-  <div className="hero-bottom"><p>Hey, I'm <strong>Shaunak.</strong> An engineer who became a founder, now bringing both mindsets to product management. I turn messy problems into things people actually use.</p><div className="hero-links"><MagneticLink href="#work" className="round-arrow-link" >EXPLORE MY WORK <span className="round-arrow"><Arrow diagonal/></span></MagneticLink><a className="simple-underlink" href={GH} target="_blank" rel="noreferrer">GITHUB ↗</a></div></div>
-  <div className="hero-footer"><span>SCROLL TO EXPLORE ↓</span><span>STRATEGY <span className="hero-cross">✳</span> DESIGN <span className="hero-cross">✳</span> CODE</span><span>01 / 06</span></div>
-  </div><span className="hero-orbit" aria-hidden="true">✳</span></section>}
-
-function SectionHeading({index,eyebrow,title,description,dark=false}){return <Reveal className={'section-heading '+(dark?'section-heading-dark':'')}><div className="section-kicker"><span>{index} / {eyebrow}</span><span className="section-kicker-line"/></div><div className="section-heading-row"><h2>{title}</h2>{description&&<p>{description}</p>}</div></Reveal>}
-
-function ProjectArtwork({id}){
-  if(id==='printlab')return <div className="art art-printlab"><div className="art-print-head"><span>THE PRINT LAB</span><span>ART THAT FEELS LIKE YOU ✳</span></div><div className="art-frames"><div className="art-frame frame-a"><div className="sun-shape"/><div className="frame-text">A LITTLE<br/>MORE<br/><i>color.</i></div></div><div className="art-frame frame-b"><div className="frame-moon"/><span>FORM / FEELING</span></div><div className="art-frame frame-c"><span>MAKE<br/>SPACE<br/>YOURS.</span><div className="frame-blob"/></div></div><div className="art-print-foot">YOUR SPACE. YOUR STORY. <span>EST. 2026</span></div></div>;
-  if(id==='sumtracker')return <div className="art art-sumtracker"><div className="mock-browser"><span className="browser-dots">● ● ●</span><span>sumtracker / stock take</span><span>↗</span></div><div className="inventory-interface"><div className="inventory-side"><span className="inv-logo">S.</span><span>▦</span><span>▤</span><span>◫</span><span>⚙</span></div><div className="inventory-main"><div className="inventory-top"><div><small>INVENTORY / AUDIT</small><h3>Stock take</h3></div><div className="pill-light">● In progress</div></div><div className="inventory-stat-grid"><div><small>ITEMS COUNTED</small><b>1,248</b><span>↗ +18.4%</span></div><div><small>ACCURACY</small><b>99.2%</b><span>↗ On track</span></div></div><div className="inventory-table"><div><b>ITEM</b><b>EXPECTED</b><b>COUNTED</b></div>{[['Everyday Hoodie','120','120'],['Classic Tee','86','86'],['Studio Cap','42','41']].map((r,i)=><div key={r[0]}><span><i className={'item-icon item-icon-'+i}/> {r[0]}</span><span>{r[1]}</span><span>{r[2]}</span></div>)}</div></div></div><div className="mock-disclaimer">ILLUSTRATIVE INTERFACE · NOT ACTUAL PRODUCT UI</div></div>;
-  if(id==='paytm')return <div className="art art-paytm"><span className="paytm-ghost">PAYTM</span><div className="paytm-device"><div className="phone-indicator"/><div className="phone-top">paytm <span>☰</span></div><small>INSURANCE, MADE SIMPLE</small><h3>Feel secure.<br/>Live more.</h3><div className="phone-card"><span>✳</span><div><b>Life insurance</b><small>Protection for what matters</small></div><span>→</span></div><div className="phone-card"><span>◈</span><div><b>Explore plans</b><small>Find your right fit</small></div><span>→</span></div><div className="phone-cta">Explore coverage →</div></div><div className="paytm-side"><span className="paytm-num">8.5M</span><span>USER SCALE</span><div className="paytm-chart"><i/><i/><i/><i/><i/><i/><i/></div><span>PRODUCT × ENGINEERING</span></div><span className="mock-disclaimer">CONCEPT VISUAL · NOT ACTUAL PAYTM UI</span></div>;
-  return <div className="art art-xchange"><div className="xchange-mark">X<span>✳</span></div><div className="xchange-circles"><span className="circle-one">PRODUCT<br/>BUILDERS</span><span className="circle-two">ROUND<br/>TABLES</span><span className="circle-three">BETTER<br/>IDEAS</span></div><p>GOOD CONVERSATIONS<br/>CHANGE EVERYTHING.</p><div className="xchange-bottom"><span>MEET YOUR NEXT THINKING PARTNER</span><span>↗</span></div></div>;
+function ProjectArt({id}){
+  if(id==='printlab')return <div className="feature-art art-printlab"><div className="feature-art-label"><img src={ASSETS+'print-lab-logo.png'} alt="The Print Lab real logo"/><span>BUILT AS A BUSINESS, NOT A MOCKUP</span></div><div className="print-site"><SitePreview/><img className="print-wall-detail" src={ASSETS+'print-lab-wall.jpg'} alt="Real The Print Lab poster collection" loading="lazy"/></div><div className="art-bottom"><span>EXPLORE THE LIVE PRODUCT</span><span>↗</span></div></div>;
+  return <div className="feature-art art-xchange"><div className="xchange-label"><span>DESIGNED FOR BETTER CONVERSATIONS</span><img src={ASSETS+'xchange-mark.svg'} alt="XChange icon"/></div><img className="xchange-logo" src={ASSETS+'xchange-lockup.svg'} alt="XChange official logo"/><div className="xchange-roundtable"><div className="round-node node-a">IDEAS</div><div className="round-node node-b">PEOPLE</div><div className="round-node node-c">ROUNDTABLES</div><div className="round-core">✳</div></div><div className="xchange-art-bottom"><span>FROM CONNECTIONS TO CONVERSATIONS.</span><span>↗</span></div></div>;
 }
-
-function Work({onSelect}){return <section id="work" className="work-section wrap"><SectionHeading index="01" eyebrow="SELECTED WORK" title={<>Proof, not <i>promises.</i></>} description="Four stories that connect the dots between product thinking, hands-on engineering and measurable outcomes."/>
-  <div className="work-grid">{cases.map((project,i)=><Reveal key={project.id} delay={i%2*90} className={'project-card project-card-'+project.id}><button className="project-image-btn" onClick={()=>onSelect(project)} aria-label={'Read case study: '+project.title}><ProjectArtwork id={project.id}/></button><div className="project-meta"><span>{project.no} / {project.eyebrow}</span><span>{project.year}</span></div><div className="project-summary"><div><h3>{project.title}</h3><p>{project.desc}</p></div><button className="project-open" onClick={()=>onSelect(project)} aria-label={'Open '+project.title+' case study'}>↗</button></div><div className="project-stats">{project.stats.map(([n,l])=><div key={l}><strong>{n}</strong><span>{l}</span></div>)}</div></Reveal>)}</div>
-  </section>}
-
-function Philosophy(){return <section className="manifesto-section"><div className="manifesto-grid" aria-hidden="true"/><div className="wrap manifesto-inner"><Reveal><div className="section-kicker"><span>02 / THE WAY I THINK</span><span className="section-kicker-line"/></div><p className="manifesto">A good product is a <em>great question</em> answered with <span>exceptional execution.</span></p><div className="manifesto-bottom"><span>LESS FEATURE FACTORIES. MORE MEANINGFUL OUTCOMES.</span><span>✳</span></div></Reveal></div></section>}
-
-function Approach(){return <section id="approach" className="approach-section wrap"><SectionHeading index="03" eyebrow="MY OPERATING SYSTEM" title={<>The <i>sweet spot.</i></>} description="I work where user empathy, business reality and technical possibility collide."/><div className="approach-grid">{capabilities.map(c=><Reveal key={c.n} className="approach-card"><span className="approach-number">{c.n} <span>↗</span></span><div className="approach-glyph">{c.n==='01'?'◎':c.n==='02'?'◈':'⌘'}</div><h3>{c.title}</h3><p>{c.text}</p><div className="chip-row">{c.tags.map(t=><span key={t}>{t}</span>)}</div></Reveal>)}</div><Reveal className="toolbelt"><span>UNDER THE HOOD</span><div>REACT <b>✳</b> NEXT.JS <b>✳</b> TYPESCRIPT <b>✳</b> PYTHON <b>✳</b> NODE.JS <b>✳</b> AWS <b>✳</b> SQL <b>✳</b> SPRING BOOT</div></Reveal></section>}
-
-function Journey(){return <section id="journey" className="journey-section"><div className="wrap"><SectionHeading index="04" eyebrow="THE JOURNEY" title={<>Built in <i>layers.</i></>} description="From shipping features to owning the whole business problem." dark/><div className="timeline">{timeline.map((item,i)=><Reveal key={item.company} className="timeline-row" delay={i*45}><div className="timeline-date">{item.date}</div><div className="timeline-node"><span/></div><div className="timeline-company"><span>{item.tag}</span><h3>{item.company}</h3></div><div className="timeline-details"><strong>{item.role}</strong><p>{item.note}</p></div><span className="timeline-index">0{i+1}</span></Reveal>)}</div></div></section>}
-
-function GitLog(){
- const [commits,setCommits]=useState([]),[loading,setLoading]=useState(true),[error,setError]=useState(false),[repo,setRepo]=useState('Shaunakk09/Portfolio');
- useEffect(()=>{let active=true;const ctrl=new AbortController();(async()=>{try{const reposResponse=await fetch('https://api.github.com/users/Shaunakk09/repos?sort=pushed&per_page=12',{signal:ctrl.signal});if(!reposResponse.ok)throw Error('repository fetch');const allRepos=await reposResponse.json();const candidates=allRepos.filter(r=>!r.fork&&!r.archived).slice(0,5);const results=await Promise.all(candidates.map(async r=>{const res=await fetch(`https://api.github.com/repos/${r.full_name}/commits?per_page=5`,{signal:ctrl.signal});if(!res.ok)return [];const list=await res.json();return Array.isArray(list)?list.map(c=>({sha:c.sha,message:c.commit.message.split('\n')[0],date:c.commit.author?.date||'',url:c.html_url,repo:r.name})):[]}));const list=results.flat().sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,8);if(active){setCommits(list);setRepo('public repositories');setLoading(false);}}catch(e){if(e.name!=='AbortError'&&active){setError(true);setLoading(false);}}})();return()=>{active=false;ctrl.abort();};},[]);
- const fallback=[['9e94aac','react certificate'],['e745fb7','work ex card'],['6666980','training'],['1b9a49d','about me']];
- return <section id="git-log" className="git-section wrap"><SectionHeading index="05" eyebrow="THE BUILD LOG" title={<>Not just ideas. <i>Commits.</i></>} description="A glimpse into the work behind the pixels. Real commit history, linked to GitHub — not a made-up activity counter."/>
- <Reveal className="terminal"><div className="terminal-top"><div className="terminal-lights"><i/><i/><i/></div><span>shaunak@build-machine: ~/shipping-things</span><span>⌘ K</span></div><div className="terminal-body"><div className="terminal-prompt"><span>➜</span> <b>~</b> git log --oneline --all <span className="terminal-flag">--human</span></div><div className="terminal-note">{"// "}{loading?'Connecting to GitHub…':error?'Live feed unavailable; showing verified portfolio history.':'Recent commits across '+repo}</div>
- <div className="commit-rows">{loading?<div className="terminal-loading">Fetching real changes <span className="blink">_</span></div>:(!error&&commits.length>0)?commits.map((c,i)=><a href={c.url} key={c.sha} target="_blank" rel="noreferrer" className="commit-row"><span className="git-tree">{i===commits.length-1?'└':'├'}─●</span><span className="commit-sha">{c.sha.slice(0,7)}</span><span className="commit-message">{c.message}</span><span className="commit-repo">{c.repo}</span><span className="commit-date">{new Date(c.date).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'2-digit'})}</span><span className="commit-arrow">↗</span></a>):fallback.map(([sha,msg],i)=><a href={`${GH}/Portfolio/commit/${sha}`} key={sha} target="_blank" rel="noreferrer" className="commit-row"><span className="git-tree">{i===fallback.length-1?'└':'├'}─●</span><span className="commit-sha">{sha}</span><span className="commit-message">{msg}</span><span className="commit-repo">Portfolio</span><span className="commit-date">FEB '24</span><span className="commit-arrow">↗</span></a>)}</div>
- <div className="terminal-end"><span>➜</span> <b>~</b> echo "Always in beta. Always building." <span className="blink">▋</span></div></div><div className="terminal-footer"><span><span className="green-indicator"/> PUBLIC GITHUB HISTORY</span><a href={GH} target="_blank" rel="noreferrer">VIEW GITHUB PROFILE ↗</a></div></Reveal></section>
+function Featured({select}){return <section id="work" className="featured-section wrap"><SectionTitle number="01" eyebrow="FEATURED PRODUCTS" description="What I can actually show: a live business I founded and an independent product experiment.">I built <em>these.</em></SectionTitle><div className="featured-grid">{featured.map((p,i)=><Reveal key={p.id} className={'feature-card feature-'+p.id} delay={i*110}>
+  <button onClick={()=>select(p)} className="art-button" aria-label={'Read '+p.title+' case study'}><ProjectArt id={p.id}/></button><div className="feature-metadata"><span>{p.number} / {p.label}</span><span>VIEW CASE STUDY ↗</span></div><div className="feature-summary"><div><h3>{p.title}</h3><p>{p.subtitle}</p><span>{p.kind}</span></div><button onClick={()=>select(p)} aria-label={'Open '+p.title} className="feature-open">↗</button></div><div className="feature-metrics">{p.metrics.map(([val,lab])=><div key={lab}><strong>{val}</strong><small>{lab}</small></div>)}</div>
+</Reveal>)}</div></section>}
+function Manifesto(){return <section className="manifesto"><div className="wrap"><Reveal><div className="section-index"><span>02 / MY POINT OF VIEW</span><span className="section-index-line"/></div><p>GREAT PRODUCTS<br/>HAPPEN WHERE <em>USER NEEDS</em><br/>MEET <span>REAL ENGINEERING.</span></p><div className="manifesto-foot"><span>ASK BETTER QUESTIONS. MAKE BOLDER THINGS.</span><span>✳</span></div></Reveal></div></section>}
+function Experience(){return <section id="experience" className="experience-section wrap"><SectionTitle number="03" eyebrow="PROFESSIONAL EXPERIENCE" description="Real work at real companies. These are contributions and outcomes, not personal portfolio products.">Where I've <em>shipped.</em></SectionTitle>
+  <div className="experience-header"><span>COMPANY & ROLE</span><span>WHAT I WORKED ON</span><span>PERIOD</span></div><div className="experience-list">{employment.map((job,i)=><Reveal className="experience-card" key={job.company} delay={i*45}><div className="experience-company"><span className="experience-number">{job.n} / {job.type}</span><h3>{job.company}</h3><strong>{job.role}</strong></div><div className="experience-body"><p>{job.description}</p><div className="experience-impact">↗ {job.impact}</div><div className="experience-tags">{job.tags.map(t=><span key={t}>{t}</span>)}</div></div><div className="experience-date">{job.date}</div></Reveal>)}</div>
+  <p className="experience-disclaimer">Professional work is described at an experience level; no confidential company product screens or proprietary designs are reproduced.</p></section>}
+function Archive(){return <section id="archive" className="archive-section"><div className="wrap"><SectionTitle number="04" eyebrow="THE PROJECT ARCHIVE" description="The earlier builds that sharpened my engineering instincts. Every thumbnail is from my original portfolio.">Before the <em>business.</em></SectionTitle><div className="archive-grid">{legacy.map((p,i)=><Reveal key={p.title} delay={i*65}><a href={p.href} target="_blank" rel="noreferrer" className="archive-card"><div className="archive-image"><img src={p.img} alt={p.title+' project screenshot'} loading="lazy"/><div className="archive-hover">VIEW PROJECT ↗</div></div><div className="archive-meta"><span>{p.category}</span><span>{p.tag}</span></div><h3>{p.title}<span>↗</span></h3><p>{p.desc}</p></a></Reveal>)}</div></div></section>}
+function Skills(){return <section id="skills" className="skills-section wrap"><SectionTitle number="05" eyebrow="THE TOOLKIT" description="Not a list of buzzwords — three lenses I bring to the same problem.">My unfair <em>overlap.</em></SectionTitle><div className="skills-grid">{skillGroups.map((g,i)=><Reveal className="skill-card" key={g.id} delay={i*70}><div className="skill-top"><span>{g.id}</span><span>{i===0?'◎':i===1?'⌘':'↗'}</span></div><h3>{g.title}</h3><p>{g.intro}</p><div className="skill-tags">{g.items.map(x=><span key={x}>{x}</span>)}</div></Reveal>)}</div></section>}
+function Journey(){const rows=[
+ {year:'2026 — NOW',place:'The Print Lab AI',role:'Founder',detail:'Customer discovery → product → business operations.',num:'01'},
+ {year:'2026 — NOW',place:'Nanyang Business School, NTU',role:'Full-time MBA · Singapore',detail:'Connecting the technical foundation with strategy and business thinking.',num:'02'},
+ {year:'2025 — 2026',place:'Sumtracker',role:'Frontend Engineer',detail:'B2B SaaS; inventory workflows and merchant usability.',num:'03'},
+ {year:'2023 — 2025',place:'Paytm / One97',role:'Software Engineer · Intern → Full-time',detail:'Fintech products, backend systems, platform tooling and performance.',num:'04'},
+ {year:'2021 — 2022',place:'Ernst & Young',role:'Software Engineer Intern',detail:'Enterprise software and document-management systems.',num:'05'},
+ {year:'2019 — 2023',place:'Thapar Institute',role:'B.E. · Engineering',detail:'The technical foundation.',num:'06'}
+ ];return <section className="journey-section"><div className="wrap"><SectionTitle number="06" eyebrow="THE JOURNEY" dark description="From writing the code to owning the problem behind it.">Every layer <em>counts.</em></SectionTitle><div className="journey-list">{rows.map((r,i)=><Reveal className="journey-row" key={r.num} delay={i*40}><span className="journey-num">{r.num}</span><span className="journey-date">{r.year}</span><div className="journey-place"><h3>{r.place}</h3><span>{r.role}</span></div><p>{r.detail}</p></Reveal>)}</div></div></section>}
+function GithubGraph(){
+ const repos=['Portfolio','Cinemate','codebook','taskMate','sentiment_analysis'];
+ const [repo,setRepo]=useState('Portfolio'),[commits,setCommits]=useState([]),[loading,setLoading]=useState(true),[error,setError]=useState('');
+ useEffect(()=>{
+   const controller=new AbortController();setLoading(true);setError('');setCommits([]);
+   fetch(`https://api.github.com/repos/Shaunakk09/${repo}/commits?per_page=16`,{signal:controller.signal,headers:{Accept:'application/vnd.github+json'}})
+     .then(res=>{if(!res.ok)throw Error(res.status===403?'GitHub rate limit reached':'GitHub is unavailable');return res.json();})
+     .then(data=>{if(!Array.isArray(data))throw Error('No public commit data');setCommits(data.map(c=>({sha:c.sha,parents:(c.parents||[]).map(p=>p.sha),message:c.commit?.message?.split('\n')[0]||'Commit',date:c.commit?.author?.date||'',url:c.html_url})));setLoading(false);})
+     .catch(e=>{if(e.name!=='AbortError'){setError(e.message||'Unable to load commits');setLoading(false);}});
+   return()=>controller.abort();
+ },[repo]);
+ const indexBySha=useMemo(()=>new Map(commits.map((c,i)=>[c.sha,i])),[commits]);
+ const paths=useMemo(()=>commits.flatMap((c,i)=>c.parents.map((parent,j)=>({from:i,to:indexBySha.get(parent),j})).filter(edge=>Number.isInteger(edge.to)&&edge.to>edge.from)),[commits,indexBySha]);
+ return <section id="git-graph" className="git-section wrap"><SectionTitle number="07" eyebrow="ACTUAL GIT HISTORY" description="Switch between public repositories. Nodes and connections are generated from real commit parent SHAs — not a fake activity heatmap.">Built one <em>commit</em> at a time.</SectionTitle>
+  <Reveal className="git-terminal"><div className="terminal-toolbar"><span className="traffic"><i/><i/><i/></span><span>~/shaunak/workbench</span><span className="terminal-online"><i/> LIVE GITHUB API</span></div><div className="terminal-headline"><div><span>REPOSITORY EXPLORER</span><h3>git log <em>--graph</em></h3></div><a href={GITHUB} target="_blank" rel="noreferrer">OPEN GITHUB ↗</a></div>
+   <div className="repo-tabs" role="group" aria-label="Select GitHub repository">{repos.map(r=><button key={r} aria-pressed={repo===r} className={repo===r?'active':''} onClick={()=>setRepo(r)}>{r}</button>)}</div>
+   <div className="commit-panel" aria-live="polite">{loading?<div className="commit-message-state">FETCHING HISTORY <span className="blink">▋</span></div>:error?<div className="commit-message-state">{error}. <a href={`${GITHUB}/${repo}/commits`} target="_blank" rel="noreferrer">See commits directly ↗</a></div>:commits.length===0?<div className="commit-message-state">No public commit data was returned.</div>:<div className="graph-list">
+     <svg className="graph-svg" aria-hidden="true" viewBox={`0 0 72 ${commits.length*74}`} preserveAspectRatio="none">{paths.map((edge,i)=>{const y1=edge.from*74+37,y2=edge.to*74+37;return edge.j===0?<path key={i} d={`M 24 ${y1} L 24 ${y2}`} stroke="#8bec89" strokeWidth="2" fill="none"/>:<path key={i} d={`M 24 ${y1} Q 53 ${y1+15} 53 ${y1+29} L 53 ${y2-24} Q 53 ${y2} 24 ${y2}`} stroke="#c1aeff" strokeWidth="2" fill="none"/>;})}{commits.map((c,i)=><circle key={c.sha} cx="24" cy={i*74+37} r={i===0?8:6} fill={i===0?'#d9f75a':'#101b18'} stroke={i===0?'#d9f75a':'#8bec89'} strokeWidth="2.5"/>)}</svg>
+     <div className="graph-rows">{commits.map((c,i)=><a className="graph-row" href={c.url} key={c.sha} target="_blank" rel="noreferrer"><span className="graph-spacer"/><span className="graph-sha">{c.sha.slice(0,7)}</span><span className="graph-message">{c.message}</span><span className="graph-date">{c.date?new Date(c.date).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'2-digit'}):''}</span><span className="graph-arrow">↗</span></a>)}</div>
+   </div>}</div><div className="terminal-foot"><span>● REAL PUBLIC COMMITS & PARENT CONNECTIONS</span><span>{!loading&&!error?commits.length+' SHOWN':''}</span></div>
+  </Reveal></section>;
 }
-
-function About(){return <section className="about-section"><div className="wrap about-grid"><Reveal className="about-left"><div className="section-kicker"><span>06 / BEYOND THE BRIEF</span><span className="section-kicker-line"/></div><h2>More than a<br/><i>job title.</i></h2><div className="about-doodle">✳</div></Reveal><Reveal className="about-right"><p>I'm Shaunak — currently pursuing my MBA at <strong>Nanyang Technological University, Singapore</strong>. Before stepping deeper into product, I spent three years engineering real software, across fintech and B2B SaaS.</p><p>Then I founded <strong>The Print Lab AI</strong>. That changed everything: decisions weren't just about code quality anymore, but customers, operations, growth, margins and what to build next.</p><p>I like my thinking structured, my interfaces considered, and my experiments real. Outside work: golf, anime, and a healthy obsession with making things better.</p><div className="about-links"><a href={LINKEDIN} target="_blank" rel="noreferrer">LINKEDIN ↗</a><a href={GH} target="_blank" rel="noreferrer">GITHUB ↗</a></div></Reveal></div></section>}
-
-function Contact(){return <footer id="contact" className="contact-section"><div className="wrap"><div className="contact-top"><span>GOT A PROBLEM WORTH SOLVING?</span><span>LET'S MAKE SOMETHING MEANINGFUL.</span></div><Reveal><h2>LET'S <i>BUILD</i><br/><a href={`mailto:${EMAIL}`} className="contact-big-link">SOMETHING<span>↗</span></a></h2></Reveal><div className="contact-bottom"><div><strong>SHAUNAK AHLUWALIA © {new Date().getFullYear()}</strong><span>DESIGNED WITH INTENT. BUILT WITH CODE.</span></div><a href={`mailto:${EMAIL}`}>{EMAIL.toLowerCase()} ↗</a><div><a href={LINKEDIN} target="_blank" rel="noreferrer">LINKEDIN ↗</a><a href={GH} target="_blank" rel="noreferrer">GITHUB ↗</a><a href="#top">BACK TO TOP ↑</a></div></div></div></footer>}
-
-function CaseModal({project,onClose}){
- const dialog=useRef(null);
- useEffect(()=>{const previous=document.activeElement;document.body.style.overflow='hidden';dialog.current?.focus();const key=e=>{if(e.key==='Escape')onClose();if(e.key==='Tab'){const focusables=dialog.current?.querySelectorAll('a[href],button:not([disabled])');if(!focusables?.length)return;const first=focusables[0],last=focusables[focusables.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}};window.addEventListener('keydown',key);return()=>{document.body.style.overflow='';window.removeEventListener('keydown',key);previous?.focus?.();};},[onClose]);
- return <div className="modal-overlay" onMouseDown={e=>{if(e.target===e.currentTarget)onClose()}}><div className="modal-panel" role="dialog" aria-modal="true" aria-labelledby="case-title" tabIndex={-1} ref={dialog}><div className="modal-topbar"><span>CASE STUDY / {project.no}</span><button onClick={onClose} aria-label="Close case study">CLOSE <span>×</span></button></div><div className="modal-content"><div className="modal-eyebrow">{project.eyebrow} · {project.year}</div><h2 id="case-title">{project.title}<span>.</span></h2><p className="modal-kicker">{project.kicker}</p><ProjectArtwork id={project.id}/><div className="modal-stat-grid">{project.stats.map(([n,l])=><div key={l}><strong>{n}</strong><span>{l}</span></div>)}</div><div className="modal-text-block"><h3>01 / THE CHALLENGE</h3><p>{project.problem}</p></div><div className="modal-text-block"><h3>02 / WHAT I DID</h3><ul>{project.approach.map(x=><li key={x}>{x}</li>)}</ul></div><div className="modal-text-block"><h3>03 / THE RESULT</h3><p>{project.impact}</p></div><div className="modal-skill-row">{project.skills.map(x=><span key={x}>{x}</span>)}</div><a className="modal-visit" href={project.url} target="_blank" rel="noreferrer">{project.linkText} <Arrow diagonal/></a></div></div></div>;
+function Credentials(){const [filter,setFilter]=useState('All');const visible=certifications.filter(c=>filter==='All'||(filter==='Certification'&&c.type==='Certification')||(filter==='Courses'&&c.type!=='Certification'));
+ return <section id="credentials" className="credential-section"><div className="wrap"><SectionTitle number="08" eyebrow="CREDENTIALS & CONTINUOUS LEARNING" description="One industry certification and a set of completed courses — intentionally kept distinct.">Always a <em>student.</em></SectionTitle><div className="credential-filters" role="group" aria-label="Filter credentials">{['All','Certification','Courses'].map(f=><button key={f} className={filter===f?'active':''} aria-pressed={filter===f} onClick={()=>setFilter(f)}>{f}</button>)}</div><div className="credentials-grid">{visible.map((c,i)=><Reveal key={c.name} className="credential-card" delay={i%4*55}><span className="credential-icon">{c.logo}</span><div><span className="credential-kind">{c.type} <span>· {c.date}</span></span><h3>{c.name}</h3><p>{c.issuer}</p></div><span className="credential-star">✳</span></Reveal>)}</div></div></section>;
 }
-
-function App(){const [selected,setSelected]=useState(null),[openMenu,setOpenMenu]=useState(false);useEffect(()=>{document.title='Shaunak Ahluwalia — Product Thinker. Technical Builder.';},[]);return <><div className="site"><Navbar openMenu={openMenu} setOpenMenu={setOpenMenu}/><main><Hero/><Work onSelect={setSelected}/><Philosophy/><Approach/><Journey/><GitLog/><About/></main><Contact/></div>{selected&&<CaseModal project={selected} onClose={()=>setSelected(null)}/>}</>}
+function Community(){return <section id="about" className="community-section wrap"><SectionTitle number="09" eyebrow="OUTSIDE THE DAY JOB" description="Curiosity and contribution don't end when the laptop closes.">The person <em>behind it.</em></SectionTitle>
+  <div className="community-grid"><Reveal className="volunteer-col"><div className="volunteer-heading">VOLUNTEERING <span>↗</span></div><div className="volunteer-item"><img src={ASSETS+'navjyoti-logo.png'} alt="Navjyoti India Foundation logo" loading="lazy"/><div><h3>Navjyoti India Foundation</h3><span>VOLUNTEER · FEB–JUN 2025</span><p>Analysed social and economic data from more than 30 rural villages to support targeted community awareness campaigns.</p></div></div><div className="volunteer-item"><div className="volunteer-monogram" aria-hidden="true">CB</div><div><h3>Clothes Box Foundation</h3><span>VOLUNTEERING</span><p>Community volunteering. Happy to share more about this experience in conversation.</p></div></div></Reveal>
+  <Reveal className="bio-col"><div className="bio-small">A LITTLE MORE ABOUT ME</div><h3>THE DETAIL<br/>IS IN THE <em>DOING.</em></h3><p>I'm an MBA candidate at Nanyang Business School, Singapore, with a software engineering background and a founder's appreciation for customers, costs and the messy work between an idea and a business.</p><p>Outside work, you'll find me on a golf course, in a gym, or watching anime. I like thoughtful systems — whether that's a great product experience or a great story.</p><a href={LINKEDIN} target="_blank" rel="noreferrer">CONNECT ON LINKEDIN <Arrow diagonal/></a></Reveal></div>
+ </section>;
+}
+function Footer(){return <footer id="contact" className="footer"><div className="wrap"><div className="footer-top"><span>HAVE AN INTERESTING PROBLEM?</span><span>LET'S MAKE IT REAL.</span></div><div className="footer-main"><span>LET'S</span><a href={`mailto:${EMAIL}`} aria-label="Email Shaunak to build something together">BUILD <em>TOGETHER.</em><span>↗</span></a></div><div className="footer-bottom"><div><strong>SHAUNAK AHLUWALIA © {new Date().getFullYear()}</strong><small>PRODUCT MINDED. ENGINEERING BACKED.</small></div><a href={`mailto:${EMAIL}`}>{EMAIL} ↗</a><div><a href={LINKEDIN} target="_blank" rel="noreferrer">LINKEDIN ↗</a><a href={GITHUB} target="_blank" rel="noreferrer">GITHUB ↗</a><a href="#top">BACK TO TOP ↑</a></div></div></div></footer>}
+function CaseModal({item,close}){const ref=useRef(null);useEffect(()=>{
+  const prev=document.activeElement;const old=document.body.style.overflow;document.body.style.overflow='hidden';ref.current?.focus();
+  const handler=e=>{if(e.key==='Escape')close();if(e.key==='Tab'){const links=ref.current?.querySelectorAll('a[href],button:not([disabled])');if(!links?.length)return;const first=links[0],last=links[links.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}};
+  window.addEventListener('keydown',handler);return()=>{document.body.style.overflow=old;window.removeEventListener('keydown',handler);prev?.focus?.();};
+},[close]);return <div className="modal-backdrop" onMouseDown={e=>{if(e.target===e.currentTarget)close();}}><div className="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabIndex={-1} ref={ref}><div className="modal-bar"><span>SELECTED PROJECT / {item.number}</span><button onClick={close}>CLOSE ×</button></div><div className="modal-inside"><span className="modal-label">{item.label}</span><h2 id="modal-title">{item.title}<span>.</span></h2><p className="modal-sub">{item.subtitle}</p><ProjectArt id={item.id}/><div className="modal-metrics">{item.metrics.map(([a,b])=><div key={b}><strong>{a}</strong><span>{b}</span></div>)}</div><div className="modal-block"><span>01 / THE CHALLENGE</span><p>{item.challenge}</p></div><div className="modal-block"><span>02 / WHAT I OWNED</span><ul>{item.work.map(x=><li key={x}>{x}</li>)}</ul></div><div className="modal-block"><span>03 / OUTCOME</span><p>{item.outcome}</p></div><div className="modal-chips">{item.skills.map(t=><span key={t}>{t}</span>)}</div><a className="modal-link" href={item.website} target="_blank" rel="noreferrer">{item.linkLabel} <Arrow diagonal/></a></div></div></div>}
+function App(){const [selected,setSelected]=useState(null);useEffect(()=>{document.title='Shaunak Ahluwalia — Product, Engineering & Founder';},[]);return <><ScrollIndicator/><Nav/><main><Hero/><StudioMarquee/><Featured select={setSelected}/><Manifesto/><Experience/><Archive/><Skills/><Journey/><GithubGraph/><Credentials/><Community/></main><Footer/>{selected&&<CaseModal item={selected} close={()=>setSelected(null)}/>}</>}
 export default App;
