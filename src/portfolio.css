@@ -21,3 +21,54 @@
 @media(max-width:460px){.hero-copy h1{font-size:clamp(66px,16vw,86px)}.hero-photo-area{height:370px}.portrait-frame{height:344px;width:80%}.portrait-orbit-one{width:360px;height:360px}.portrait-orbit-two{width:270px;height:270px;top:45px}.portrait-badge{width:85px;height:85px;font-size:8px;top:10px;left:0}.portrait-badge i{font-size:18px}.portrait-caption{font-size:7px;padding:9px 11px}.hero-sub{font-size:13px}.hero-ctas{gap:17px}.primary-cta{font-size:9px;padding:14px 16px}.text-cta{font-size:9px}.hero-bottomline{margin-top:0}.feature-art{height:315px}.art-printlab,.art-xchange{padding:14px}.feature-art-label img{width:119px;height:45px}.feature-art-label span{font-size:7px;max-width:110px;text-align:right}.print-site{height:215px}.live-browser{height:193px;width:91%}.print-wall-detail{width:39%;height:115px;right:-2px;bottom:8px;border-width:5px}.art-bottom{left:15px;right:15px;bottom:13px;font-size:8px}.xchange-logo{width:75%;height:85px}.xchange-roundtable{width:250px;height:230px;bottom:-76px}.xchange-roundtable:before{inset:20px}.xchange-roundtable:after{inset:60px}.round-node{font-size:8px;padding:11px}.node-a{top:55px}.node-b{right:13px}.node-c{left:48px;bottom:52px}.round-core{top:72px;left:80px}.xchange-art-bottom{left:15px;right:15px;bottom:12px;font-size:8px}.feature-metadata{font-size:8px}.feature-metadata span:last-child{display:none}.feature-metrics strong{font-size:24px}.feature-metrics small{font-size:9px}.manifesto p{font-size:clamp(33px,8.7vw,43px)}.archive-grid{gap:15px}.archive-image{height:170px}.archive-card h3{font-size:20px}.archive-card p{font-size:11px}.credential-card{padding:20px;gap:12px}.credential-icon{height:48px;width:48px;font-size:15px}.credential-card h3{font-size:16px}.credential-kind{font-size:9px}.credential-star{display:none}.volunteer-item img,.volunteer-monogram{width:60px;height:60px}.volunteer-item{gap:12px}.volunteer-item h3{font-size:18px}.footer-main{font-size:clamp(42px,10.6vw,58px)}.footer-main>a em{display:inline}.footer-main>a span{margin-left:5px}.footer-top{font-size:8px}.modal-inside .feature-art{height:270px}.modal-inside .live-browser{height:145px}.modal-inside .print-site{height:159px}.modal-inside .print-wall-detail{height:95px}.modal-inside .xchange-logo{height:70px}}
 @media(max-width:360px){.hero-copy h1{font-size:62px}.archive-grid{grid-template-columns:1fr}.archive-image{height:235px}.footer-main{font-size:40px}.portrait-frame{width:85%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}.code-line{display:none}}
+
+/* === V3 polish: readability, real imagery, accessible visual separation === */
+.featured-grid{column-gap:0;row-gap:0;align-items:stretch}
+.feature-card{position:relative;padding:0 32px 8px}
+.feature-card:first-child{padding-left:0;border-right:2px solid #b7b9b3;padding-right:32px}
+.feature-card:last-child{padding-right:0;padding-left:32px}
+.feature-card:last-child:before{content:'✳';position:absolute;left:-13px;top:53%;font-size:20px;line-height:22px;width:23px;height:23px;text-align:center;background:var(--paper);color:#607d61;z-index:2}
+.feature-art{border-radius:8px}
+.feature-metadata{font-size:11px;line-height:1.5;letter-spacing:.02em}
+.feature-summary p{font-size:clamp(15px,1.1vw,18px);line-height:1.55}
+.feature-summary span,.feature-metrics small{font-size:12px;line-height:1.5}
+.feature-metrics{margin-top:8px;padding-top:24px}
+.section-title-row>p{font-size:clamp(15px,1.15vw,19px)!important;line-height:1.65!important}
+.section-index,.section-index span:first-child{font-size:11px!important;letter-spacing:.07em}
+.feature-art-label span,.xchange-label,.art-bottom,.xchange-art-bottom,.url-bar,.print-photo-caption span{font-size:10px;line-height:1.4}
+.live-browser-viewport{position:relative;background:#1a1517}
+.live-browser-viewport>img{height:100%;width:100%;object-fit:cover;object-position:center center;filter:saturate(1.12)}
+.print-photo-caption{position:absolute;inset:auto 0 0;padding:30px 18px 15px;background:linear-gradient(0deg,rgba(10,10,12,.88),transparent);display:flex;align-items:flex-start;flex-direction:column;gap:5px;color:#fff;text-align:left}
+.print-photo-caption strong{font:800 clamp(15px,1.4vw,23px)/1.05 var(--display)}
+.print-photo-caption span{font-family:var(--mono);letter-spacing:.06em;font-weight:600;color:#eee}
+.skill-icon{width:66px;height:66px;display:grid;place-items:center;border:1px solid currentColor;border-radius:18px;opacity:.95;transform:rotate(-5deg);transition:transform .4s ease,background .3s ease}
+.skill-card:hover .skill-icon{transform:rotate(0deg) scale(1.06)}
+.skill-card h3{font-size:clamp(31px,2.65vw,44px)}
+.skill-card p{font-size:clamp(15px,1.13vw,18px);line-height:1.65}
+.skill-tags span{font-size:12px;line-height:1.45}
+.experience-body p,.experience-impact,.volunteer-item p,.bio-col p{font-size:clamp(15px,1.08vw,17px);line-height:1.7}
+.experience-tags span{font-size:11px}
+.experience-company strong,.journey-place>span{font-size:13px;line-height:1.4}
+.experience-date,.journey-date,.journey-row p,.credential-kind,.credential-card p,.volunteer-item>div>span{font-size:12px;line-height:1.55}
+.journey-row p{font-size:14px}
+.credential-card h3{font-size:clamp(17px,1.2vw,21px);line-height:1.4}
+.credential-filters button{font-size:12px}
+.terminal-toolbar,.terminal-headline>div>span,.terminal-foot,.repo-tabs,.graph-sha,.graph-date{font-size:11px}
+.graph-message{font-size:clamp(12px,.95vw,15px)}
+.volunteer-item h3{font-size:clamp(20px,1.75vw,27px)}
+.clothesbox-identity{flex:0 0 112px;width:112px;height:88px;background:#fff;border:1px solid #e1e6df;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:8px;overflow:hidden}
+.clothesbox-identity>img{width:34px;height:34px;object-fit:contain}
+.clothesbox-wordmark{text-align:center;color:#78b935;line-height:1.1}
+.clothesbox-wordmark b{font-family:var(--sans);font-size:13px;font-weight:800;letter-spacing:-.06em}
+.clothesbox-wordmark b span{color:#2d275c}
+.clothesbox-wordmark small{display:block;font-size:8px;letter-spacing:.14em;font-weight:800;color:#444}
+.volunteer-item img{object-fit:contain}
+@media(max-width:970px){.feature-card{padding:0 18px 8px}.feature-card:first-child{padding-right:18px}.feature-card:last-child{padding-left:18px}}
+@media(max-width:720px){.featured-grid{grid-template-columns:1fr;row-gap:38px}.feature-card,.feature-card:first-child,.feature-card:last-child{padding:0;border:0}
+.feature-card:first-child{padding-bottom:50px;border-bottom:2px solid #aeb4ae}.feature-card:last-child:before{content:none}
+.feature-card:last-child{padding-top:5px}.feature-summary p{font-size:16px}.feature-metadata{font-size:10px}.feature-metrics small{font-size:11px}
+.skill-icon{width:60px;height:60px}.skill-icon svg{width:38px;height:38px}.skill-card p{font-size:16px}.section-title-row>p{font-size:16px!important}
+.experience-body p,.experience-impact,.volunteer-item p,.bio-col p{font-size:15px}.graph-message{font-size:12px}.volunteer-item h3{font-size:20px}
+.clothesbox-identity{width:82px;flex-basis:82px;height:74px}.clothesbox-wordmark b{font-size:11px}}
+@media(max-width:460px){.feature-card:first-child{padding-bottom:35px}.featured-grid{row-gap:28px}.feature-metadata{font-size:9.5px}.feature-summary p{font-size:15px}.feature-metrics strong{font-size:27px}.feature-metrics small{font-size:11px}
+.art-bottom,.xchange-art-bottom{font-size:9px}.credential-card h3{font-size:17px}.credential-card p{font-size:12px}.section-index span:first-child{font-size:10px!important}.clothesbox-identity{flex-basis:78px;width:78px}.clothesbox-wordmark b{font-size:10px}}
